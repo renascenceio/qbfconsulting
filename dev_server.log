@@ -1,0 +1,22 @@
+
+> qbf-site@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.2 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+✓ Ready in 603ms
+
+○ Compiling / ...
+ GET / 200 in 9.7s (next.js: 8.6s, application-code: 1091ms)
+ GET / 200 in 247ms (next.js: 24ms, application-code: 223ms)
+ GET /login 200 in 1013ms (next.js: 876ms, application-code: 137ms)
+ GET /admin/dashboard 200 in 1236ms (next.js: 1118ms, application-code: 118ms)
+ GET /admin/content/blog 200 in 968ms (next.js: 879ms, application-code: 89ms)
+ GET /blog 200 in 904ms (next.js: 777ms, application-code: 128ms)
+✓ Compiled in 193ms
+ GET / 200 in 552ms (next.js: 116ms, application-code: 436ms)
+ GET / 200 in 189ms (next.js: 4ms, application-code: 185ms)
+ GET /search 200 in 1431ms (next.js: 1305ms, application-code: 127ms)
+ GET /services/loyalty-program-implementation 200 in 1065ms (next.js: 912ms, application-code: 153ms)
+ GET /hub/frameworks 200 in 1010ms (next.js: 841ms, application-code: 169ms)
