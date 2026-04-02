@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Search } from "lucide-react";
+import { Menu, X, Search, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -73,6 +73,9 @@ export const Navbar = () => {
               {link.name}
             </Link>
           ))}
+          <div className="flex items-center gap-2 text-qbf-gray font-bold text-xs uppercase tracking-widest cursor-pointer hover:text-qbf-orange transition-colors">
+            <Globe size={16} /> EN
+          </div>
           <Link
             href="/contact"
             className="bg-qbf-orange text-white px-5 py-2.5 rounded-full text-sm font-bold hover:opacity-90 transition-opacity"

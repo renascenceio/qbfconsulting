@@ -2,25 +2,60 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowLeft, CheckCircle, Download, FileText, Lock, User, Calendar } from "lucide-react";
+import { ArrowLeft, CheckCircle, Download, FileText, Lock, User, Calendar, Bookmark } from "lucide-react";
 
 export default function HubReportItemPage({ params }: { params: { slug: string } }) {
   const [isRegistered, setIsRegistered] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
     const registered = localStorage.getItem("hub_registered") === "true";
     setIsRegistered(registered);
-  }, []);
+
+    const saved = JSON.parse(localStorage.getItem("hub_saved") || "[]");
+    setIsSaved(saved.some((s: any) => s.slug === params.slug));
+  }, [params.slug]);
+
+  const toggleSave = () => {
+    const saved = JSON.parse(localStorage.getItem("hub_saved") || "[]");
+    if (isSaved) {
+      const newSaved = saved.filter((s: any) => s.slug !== params.slug);
+      localStorage.setItem("hub_saved", JSON.stringify(newSaved));
+    } else {
+      saved.push({
+        title: "State of Loyalty 2024",
+        slug: params.slug,
+        type: "Report",
+        href: `/hub/reports/${params.slug}`
+      });
+      localStorage.setItem("hub_saved", JSON.stringify(saved));
+    }
+    setIsSaved(!isSaved);
+  };
 
   return (
     <div className="section-padding bg-qbf-white min-h-screen">
       <div className="max-content">
-        <Link
-          href="/hub/reports"
-          className="text-qbf-orange font-bold text-sm flex items-center gap-2 mb-12 hover:-translate-x-2 transition-transform"
-        >
-          <ArrowLeft size={16} /> Back to Reports
-        </Link>
+        <div className="flex justify-between items-center mb-12">
+          <Link
+            href="/hub/reports"
+            className="text-qbf-orange font-bold text-sm flex items-center gap-2 hover:-translate-x-2 transition-transform"
+          >
+            <ArrowLeft size={16} /> Back to Reports
+          </Link>
+
+          <button
+            onClick={toggleSave}
+            className={`flex items-center gap-2 px-6 py-2 rounded-full border font-bold text-sm transition-all ${
+              isSaved
+                ? "bg-qbf-orange border-qbf-orange text-white"
+                : "bg-white border-qbf-divider text-qbf-gray hover:border-qbf-orange hover:text-qbf-orange"
+            }`}
+          >
+            <Bookmark size={16} fill={isSaved ? "currentColor" : "none"} />
+            {isSaved ? "Saved" : "Save Resource"}
+          </button>
+        </div>
 
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start mb-32">
