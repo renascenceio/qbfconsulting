@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --qbf-orange: #FF5C1A;
+  --qbf-black: #0D0D0D;
+  --qbf-white: #F9F9F9;
+  --qbf-orange-muted: #FF5C1A26;
+  --qbf-gray: #6B6B6B;
+  --qbf-divider: #E2E2E2;
+
+  --background: var(--qbf-white);
+  --foreground: var(--qbf-black);
+}
+
+.dark {
+  --background: var(--qbf-black);
+  --foreground: var(--qbf-white);
+}
+
+@theme inline {
+  --color-qbf-orange: var(--qbf-orange);
+  --color-qbf-black: var(--qbf-black);
+  --color-qbf-white: var(--qbf-white);
+  --color-qbf-orange-muted: var(--qbf-orange-muted);
+  --color-qbf-gray: var(--qbf-gray);
+  --color-qbf-divider: var(--qbf-divider);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-display: "Syne", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+
+  --spacing-container: 1200px;
+}
+
+@layer base {
+  * {
+    @apply border-qbf-divider;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold;
+  }
+}
+
+@layer utilities {
+  .max-content {
+    max-width: var(--spacing-container);
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-12 md:py-20;
+  }
+}
