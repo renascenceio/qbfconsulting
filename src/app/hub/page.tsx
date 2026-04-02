@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Lock, FileText, Layout, Download, Users, Zap } from "lucide-react";
+import { Lock, FileText, Layout, Download, Users, Zap, User, Search, Briefcase } from "lucide-react";
 
 export default function HubLandingPage() {
   const [isRegistered, setIsRegistered] = useState(false);
@@ -30,7 +30,7 @@ export default function HubLandingPage() {
     <div className="section-padding bg-qbf-white min-h-screen">
       <div className="max-content">
         <div className="flex flex-col lg:flex-row justify-between items-center mb-32 gap-20">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl text-left">
             <h1 className="text-5xl md:text-8xl font-display font-black text-qbf-black mb-8 leading-tight tracking-tight">
               The Loyalty <br />
               <span className="text-qbf-orange">Hub.</span>
@@ -41,6 +41,18 @@ export default function HubLandingPage() {
                 : "Free, gated resources for loyalty practitioners. Reports, frameworks, and templates to help you grow."
               }
             </p>
+
+            {isRegistered && (
+              <div className="flex gap-4 mb-12">
+                <Link href="/hub/profile" className="bg-qbf-black text-white px-8 py-4 rounded-full font-bold flex items-center gap-3">
+                  <User size={20} /> My Profile
+                </Link>
+                <Link href="/hub/community" className="bg-white border border-qbf-divider text-qbf-black px-8 py-4 rounded-full font-bold flex items-center gap-3 hover:border-qbf-orange transition-all">
+                  <Briefcase size={20} /> Community Matching
+                </Link>
+              </div>
+            )}
+
             <div className="flex flex-wrap gap-12 border-t border-qbf-divider pt-12">
               {stats.map((stat, i) => (
                 <div key={i}>
