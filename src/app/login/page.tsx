@@ -9,14 +9,30 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email === "aslan@renascence.io" && password === "Admin123!") {
-      router.push("/admin/dashboard");
-    } else {
-      setError("Invalid credentials. Please try again.");
+    setIsLoading(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/auth", {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (res.ok) {
+        router.push("/admin/dashboard");
+      } else {
+        setError("Invalid credentials. Please try again.");
+      }
+    } catch (err) {
+      setError("An error occurred. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -74,9 +90,10 @@ export default function LoginPage() {
 
           <button
             type="submit"
-            className="w-full bg-qbf-orange text-white py-5 rounded-full text-lg font-black hover:opacity-90 transition-all shadow-xl shadow-qbf-orange/20 flex items-center justify-center gap-3"
+            disabled={isLoading}
+            className="w-full bg-qbf-orange text-white py-5 rounded-full text-lg font-black hover:opacity-90 transition-all shadow-xl shadow-qbf-orange/20 flex items-center justify-center gap-3 disabled:opacity-50"
           >
-            Log In <ArrowRight size={20} />
+            {isLoading ? "Logging in..." : "Log In"} <ArrowRight size={20} />
           </button>
         </form>
 

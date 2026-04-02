@@ -1,8 +1,16 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle, Download, Layout, User, Calendar, FileText } from "lucide-react";
 
 export default function HubFrameworkItemPage({ params }: { params: { slug: string } }) {
-  const isRegistered = false; // Mock state
+  const [isRegistered, setIsRegistered] = useState(false);
+
+  useEffect(() => {
+    const registered = localStorage.getItem("hub_registered") === "true";
+    setIsRegistered(registered);
+  }, []);
 
   return (
     <div className="section-padding bg-qbf-white min-h-screen">

@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Syne, DM_Sans } from "next/font/google";
+import { Lexend, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
-const syne = Syne({
+const lexend = Lexend({
   subsets: ["latin"],
-  variable: "--font-syne",
+  variable: "--font-lexend",
   weight: ["400", "500", "600", "700", "800"],
 });
 
@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${syne.variable} ${dmSans.variable}`}>
+    <html lang="en" className={`${lexend.variable} ${dmSans.variable}`}>
       <body className="antialiased">
         <Navbar />
         <main className="min-h-screen pt-20">
