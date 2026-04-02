@@ -1,8 +1,16 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowLeft, CheckCircle, Download, FileText, Lock, Share2, User, Calendar } from "lucide-react";
+import { ArrowLeft, CheckCircle, Download, FileText, Lock, User, Calendar } from "lucide-react";
 
 export default function HubReportItemPage({ params }: { params: { slug: string } }) {
-  const isRegistered = false; // Mock state
+  const [isRegistered, setIsRegistered] = useState(false);
+
+  useEffect(() => {
+    const registered = localStorage.getItem("hub_registered") === "true";
+    setIsRegistered(registered);
+  }, []);
 
   return (
     <div className="section-padding bg-qbf-white min-h-screen">
