@@ -1,25 +1,22 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Search, MapPin, Briefcase, Clock } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function CareersCategoryPage() {
-  const jobs = [
-    {
-      title: "Loyalty Strategist",
-      location: "London / Remote",
-      type: "Full-time",
-      date: "May 20, 2024",
-      department: "Strategy",
-      slug: "loyalty-strategist",
-    },
-    {
-      title: "Technical Implementation Lead",
-      location: "Remote",
-      type: "Full-time",
-      date: "April 15, 2024",
-      department: "Technology",
-      slug: "technical-implementation-lead",
-    },
-  ];
+  const [jobs, setJobs] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/careers")
+      .then(res => res.json())
+      .then(data => {
+        setJobs(data);
+        setIsLoading(false);
+      });
+  }, []);
 
   return (
     <div className="section-padding bg-qbf-white min-h-screen">
@@ -45,58 +42,50 @@ export default function CareersCategoryPage() {
           </div>
         </div>
 
-        <div className="mb-12 flex gap-4 overflow-x-auto pb-4 scrollbar-hide border-b border-qbf-divider">
-          {[
-            "All",
-            "Strategy",
-            "Technology",
-            "Operations",
-            "Design"
-          ].map((filter) => (
-            <button
-              key={filter}
-              className="px-6 py-2 rounded-full font-bold text-sm hover:text-qbf-orange transition-all whitespace-nowrap"
-            >
-              {filter}
-            </button>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-32">
-          {jobs.map((job, index) => (
-            <Link
-              key={index}
-              href={`/careers/${job.slug}`}
-              className="bg-white p-10 rounded-[2.5rem] border border-qbf-divider hover:shadow-2xl hover:shadow-black/5 transition-all group flex flex-col h-full"
-            >
-              <div className="mb-10">
-                <span className="bg-qbf-orange-muted text-qbf-orange text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full">
-                  {job.department}
+        {jobs.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-32">
+            {jobs.map((job, index) => (
+              <Link
+                key={index}
+                href={`/careers/${job.slug || job.id}`}
+                className="bg-white p-10 rounded-[2.5rem] border border-qbf-divider hover:shadow-2xl hover:shadow-black/5 transition-all group flex flex-col h-full"
+              >
+                <div className="mb-10">
+                  <span className="bg-qbf-orange-muted text-qbf-orange text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full">
+                    {job.department}
+                  </span>
+                </div>
+                <h2 className="text-2xl font-display font-bold text-qbf-black mb-10 leading-tight group-hover:text-qbf-orange transition-colors">
+                  {job.title}
+                </h2>
+                <div className="space-y-4 mb-10 mt-auto">
+                  <div className="flex items-center gap-3 text-qbf-gray text-sm font-bold uppercase tracking-widest">
+                    <MapPin size={16} className="text-qbf-orange" />
+                    <span>{job.location}</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-qbf-gray text-sm font-bold uppercase tracking-widest">
+                    <Briefcase size={16} className="text-qbf-orange" />
+                    <span>{job.type}</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-qbf-gray text-sm font-bold uppercase tracking-widest">
+                    <Clock size={16} className="text-qbf-orange" />
+                    <span>{job.date || 'Recently Posted'}</span>
+                  </div>
+                </div>
+                <span className="text-qbf-orange font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all mt-auto">
+                  Apply Now <span>→</span>
                 </span>
-              </div>
-              <h3 className="text-2xl font-display font-bold text-qbf-black mb-10 leading-tight group-hover:text-qbf-orange transition-colors">
-                {job.title}
-              </h3>
-              <div className="space-y-4 mb-10 mt-auto">
-                <div className="flex items-center gap-3 text-qbf-gray text-sm font-bold uppercase tracking-widest">
-                  <MapPin size={16} className="text-qbf-orange" />
-                  <span>{job.location}</span>
-                </div>
-                <div className="flex items-center gap-3 text-qbf-gray text-sm font-bold uppercase tracking-widest">
-                  <Briefcase size={16} className="text-qbf-orange" />
-                  <span>{job.type}</span>
-                </div>
-                <div className="flex items-center gap-3 text-qbf-gray text-sm font-bold uppercase tracking-widest">
-                  <Clock size={16} className="text-qbf-orange" />
-                  <span>{job.date}</span>
-                </div>
-              </div>
-              <span className="text-qbf-orange font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all">
-                Apply Now <span>→</span>
-              </span>
-            </Link>
-          ))}
-        </div>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <div className="bg-white border border-qbf-divider rounded-[3rem] p-20 text-center mb-32">
+            <h2 className="text-2xl font-display font-black text-qbf-black mb-4">
+              {isLoading ? "Checking for opportunities..." : "No open roles currently"}
+            </h2>
+            <p className="text-qbf-gray mb-0">Check back later or submit speculatively below.</p>
+          </div>
+        )}
 
         <div className="bg-qbf-black text-white p-12 md:p-20 rounded-[3rem] text-center">
           <h2 className="text-4xl md:text-5xl font-display font-black mb-8 leading-tight">
@@ -109,7 +98,7 @@ export default function CareersCategoryPage() {
           </p>
           <Link
             href="/contact?type=career"
-            className="bg-qbf-orange text-white px-10 py-5 rounded-full text-xl font-bold hover:opacity-90 transition-opacity inline-block shadow-xl shadow-qbf-orange/20"
+            className="bg-qbf-orange text-white px-10 py-5 rounded-full text-xl font-bold hover:opacity-90 transition-all inline-block shadow-xl shadow-qbf-orange/20"
           >
             Submit Speculatively
           </Link>

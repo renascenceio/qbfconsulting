@@ -1,9 +1,44 @@
+import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
 import Link from "next/link";
 import { ArrowLeft, Clock, Calendar, MapPin, Share2, Linkedin, Twitter, Link as LinkIcon, User } from "lucide-react";
 
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  return {
+    title: `${params.slug.replace(/-/g, ' ')} | QBF Consulting Events`,
+    description: `Join us for the ${params.slug.replace(/-/g, ' ')} workshop and level up your loyalty expertise.`,
+  };
+}
+
 export default function EventItemPage({ params }: { params: { slug: string } }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "The CLMP Certification Workshop",
+    "startDate": "2024-06-24T09:00",
+    "endDate": "2024-06-24T17:00",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "location": {
+      "@type": "Place",
+      "name": "London Center",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "London",
+        "addressCountry": "UK"
+      }
+    },
+    "image": ["https://qbfconsulting.com/event-banner.jpg"],
+    "description": "The premier certification for loyalty practitioners worldwide.",
+    "organizer": {
+      "@type": "Organization",
+      "name": "QBF Consulting",
+      "url": "https://qbfconsulting.com"
+    }
+  };
+
   return (
     <div className="section-padding bg-qbf-white min-h-screen">
+      <SchemaMarkup data={jsonLd} />
       <div className="max-content">
         <Link
           href="/events"
