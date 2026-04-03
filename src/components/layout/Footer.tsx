@@ -39,6 +39,7 @@ export const Footer = () => {
               <li><Link href="/solutions" className="text-qbf-gray hover:text-qbf-orange transition-colors">Solutions</Link></li>
               <li><Link href="/case-studies" className="text-qbf-gray hover:text-qbf-orange transition-colors">Case Studies</Link></li>
               <li><Link href="/hub" className="text-qbf-gray hover:text-qbf-orange transition-colors">Loyalty Hub</Link></li>
+              <li><Link href="/careers" className="text-qbf-gray hover:text-qbf-orange transition-colors">Careers</Link></li>
             </ul>
           </div>
 
@@ -61,6 +62,7 @@ export const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 text-xs text-qbf-gray gap-4">
           <p>© {currentYear} QBF Consulting. All rights reserved.</p>
           <div className="flex gap-6">
+            <Link href="/login" className="hover:text-qbf-white transition-colors">Admin Login</Link>
             <Link href="/legal" className="hover:text-qbf-white transition-colors">Privacy Policy</Link>
             <Link href="/legal" className="hover:text-qbf-white transition-colors">Terms of Service</Link>
           </div>

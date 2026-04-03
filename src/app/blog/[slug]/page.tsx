@@ -1,9 +1,38 @@
+import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
 import Link from "next/link";
 import { ArrowLeft, Clock, Calendar, User, Share2, Linkedin, Twitter, Link as LinkIcon } from "lucide-react";
 
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  return {
+    title: `${params.slug.replace(/-/g, ' ')} | QBF Consulting Journal`,
+    description: `Expert insights and analysis on ${params.slug.replace(/-/g, ' ')} for loyalty practitioners.`,
+  };
+}
+
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "The Death of the Tiered Program?",
+    "image": "https://qbfconsulting.com/og-image.jpg",
+    "author": {
+      "@type": "Person",
+      "name": "Founder Name"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "QBF Consulting",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://qbfconsulting.com/logo.png"
+      }
+    },
+    "datePublished": "2024-05-12"
+  };
+
   return (
     <article className="section-padding bg-qbf-white min-h-screen">
+      <SchemaMarkup data={jsonLd} />
       <div className="max-content">
         <Link
           href="/blog"

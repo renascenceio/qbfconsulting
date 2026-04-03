@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LayoutDashboard, FileEdit, Users, Settings, LogOut, Search, Bell, Check } from "lucide-react";
+import { LayoutDashboard, FileEdit, Users, Settings, LogOut, Search, Bell, Check, Briefcase, Layout } from "lucide-react";
 
 export default function AdminLayout({
   children,
@@ -19,7 +19,9 @@ export default function AdminLayout({
         <nav className="flex-grow space-y-2">
           {[
             { label: "Dashboard", icon: <LayoutDashboard size={20} />, href: "/admin/dashboard" },
-            { label: "Content Management", icon: <FileEdit size={20} />, href: "/admin/content/blog" },
+            { label: "Blog Posts", icon: <FileEdit size={20} />, href: "/admin/content/blog" },
+            { label: "Careers", icon: <Briefcase size={20} />, href: "/admin/content/careers" },
+            { label: "Products", icon: <Layout size={20} />, href: "/admin/content/products" },
             { label: "Review Queue", icon: <Check size={20} />, href: "/admin/registrations" },
             { label: "User Management", icon: <Users size={20} />, href: "/admin/users" },
             { label: "Settings", icon: <Settings size={20} />, href: "/admin/settings" },
