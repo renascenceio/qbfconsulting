@@ -3,8 +3,11 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Lock, FileText, Layout } from "lucide-react";
+import { useI18n } from "@/lib/i18n";
 
 export const HubTeaser = () => {
+  const { t } = useI18n();
+
   return (
     <section className="section-padding bg-qbf-black text-qbf-white overflow-hidden relative">
       {/* Background Glow */}
@@ -14,20 +17,19 @@ export const HubTeaser = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div>
             <span className="text-qbf-orange font-bold text-sm uppercase tracking-widest mb-6 block">
-              The Loyalty Hub
+              {t("hub_teaser_tag")}
             </span>
             <h2 className="text-5xl md:text-7xl font-display font-black leading-tight mb-8">
-              Free Resources <br /> For Loyalty Pros.
+              {t("hub_teaser_title")}
             </h2>
             <p className="text-xl text-qbf-gray mb-12 max-w-lg leading-relaxed">
-              Register for free to access exclusive reports, frameworks,
-              and templates curated for loyalty practitioners.
+              {t("hub_teaser_desc")}
             </p>
             <Link
               href="/hub"
               className="bg-qbf-orange text-white px-10 py-5 rounded-full text-xl font-bold hover:opacity-90 transition-opacity inline-flex items-center gap-3"
             >
-              Access the Hub <span className="ml-1">→</span>
+              {t("hub_teaser_cta")} <span className="mx-1">→</span>
             </Link>
           </div>
 
@@ -55,7 +57,7 @@ export const HubTeaser = () => {
                     <Lock size={20} />
                   </div>
                   <span className="text-xs font-bold uppercase tracking-wider text-white/50">
-                    Gated Resource
+                    {t("hub_teaser_gated")}
                   </span>
                 </div>
               </motion.div>

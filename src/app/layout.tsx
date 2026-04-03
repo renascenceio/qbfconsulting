@@ -3,6 +3,7 @@ import { Lexend, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { I18nProvider } from "@/lib/i18n";
 
 const lexend = Lexend({
   subsets: ["latin"],
@@ -27,13 +28,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${lexend.variable} ${dmSans.variable}`}>
-      <body className="antialiased">
-        <Navbar />
-        <main className="min-h-screen pt-20">
-          {children}
-        </main>
-        <Footer />
+    <html>
+      <body className={`${lexend.variable} ${dmSans.variable} antialiased`}>
+        <I18nProvider>
+          <Navbar />
+          <main className="min-h-screen pt-20">
+            {children}
+          </main>
+          <Footer />
+        </I18nProvider>
       </body>
     </html>
   );

@@ -2,30 +2,32 @@
 
 import { motion } from "framer-motion";
 import { Zap, Layout, Settings } from "lucide-react";
-import { cn } from "@/lib/utils";
-
-const services = [
-  {
-    title: "Strategy",
-    description: "Design long-term loyalty roadmaps that balance business objectives with human behavior.",
-    icon: <Zap className="text-qbf-orange" size={32} />,
-    href: "/services/loyalty-program-strategy",
-  },
-  {
-    title: "Implementation",
-    description: "Move from concepts to fully-operational systems. We bridge the gap between design and technology.",
-    icon: <Layout className="text-qbf-orange" size={32} />,
-    href: "/services/loyalty-program-implementation",
-  },
-  {
-    title: "Management",
-    description: "Ongoing optimization and performance management to ensure your program keeps delivering value.",
-    icon: <Settings className="text-qbf-orange" size={32} />,
-    href: "/services/loyalty-program-management",
-  },
-];
+import { useI18n } from "@/lib/i18n";
 
 export const WhatWeDo = () => {
+  const { t } = useI18n();
+
+  const services = [
+    {
+      title: t("wwd_strategy_title"),
+      description: t("wwd_strategy_desc"),
+      icon: <Zap className="text-qbf-orange" size={32} />,
+      href: "/services/loyalty-program-strategy",
+    },
+    {
+      title: t("wwd_implementation_title"),
+      description: t("wwd_implementation_desc"),
+      icon: <Layout className="text-qbf-orange" size={32} />,
+      href: "/services/loyalty-program-implementation",
+    },
+    {
+      title: t("wwd_management_title"),
+      description: t("wwd_management_desc"),
+      icon: <Settings className="text-qbf-orange" size={32} />,
+      href: "/services/loyalty-program-management",
+    },
+  ];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -53,11 +55,10 @@ export const WhatWeDo = () => {
       <div className="max-content">
         <div className="mb-16 max-w-2xl">
           <h2 className="text-4xl md:text-5xl font-display font-black text-qbf-black mb-6">
-            Everything You Need <br /> To Succeed.
+            {t("wwd_title")}
           </h2>
           <p className="text-xl text-qbf-gray">
-            From design to delivery, we provide end-to-end expertise for modern
-            loyalty programs.
+            {t("wwd_subtitle")}
           </p>
         </div>
 
@@ -83,7 +84,7 @@ export const WhatWeDo = () => {
                 {service.description}
               </p>
               <span className="text-qbf-orange font-bold text-sm inline-flex items-center group-hover:gap-2 transition-all">
-                Learn More <span className="ml-1">→</span>
+                {t("learn_more")} <span className="mx-1">→</span>
               </span>
             </motion.div>
           ))}
