@@ -1,8 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { Mail, Linkedin, Twitter } from "lucide-react";
+import { useI18n } from "@/lib/i18n";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useI18n();
 
   return (
     <footer className="bg-qbf-black text-qbf-white border-t border-white/10 pt-16 pb-8">
@@ -15,8 +19,7 @@ export const Footer = () => {
               </span>
             </Link>
             <p className="text-qbf-gray max-w-sm mb-8 leading-relaxed">
-              We build loyalty programs that earn organic traffic through depth,
-              trust through brand clarity, and loyalty through community.
+              {t("footer_tagline")}
             </p>
             <div className="flex gap-4">
               <Link href="https://linkedin.com" target="_blank" className="hover:text-qbf-orange transition-colors">

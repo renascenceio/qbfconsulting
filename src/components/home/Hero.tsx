@@ -2,8 +2,11 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useI18n } from "@/lib/i18n";
 
 export const Hero = () => {
+  const { t } = useI18n();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -46,22 +49,20 @@ export const Hero = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="max-w-4xl"
+          className="max-w-4xl text-left rtl:text-right"
         >
           <motion.h1
             variants={itemVariants}
             className="text-5xl md:text-7xl lg:text-8xl font-display font-black leading-[1.05] tracking-tight text-qbf-black mb-8"
           >
-            The Loyalty <br />
-            <span className="text-qbf-orange">Community Hub.</span>
+            {t("hero_title")}
           </motion.h1>
 
           <motion.p
             variants={itemVariants}
             className="text-lg md:text-2xl text-qbf-gray max-w-2xl mb-12 leading-relaxed"
           >
-            QBF Consulting helps practitioners grow through strategy,
-            implementation, and a gated resource hub that rewards registration.
+            {t("hero_subtitle")}
           </motion.p>
 
           <motion.div variants={itemVariants} className="flex flex-wrap gap-5">

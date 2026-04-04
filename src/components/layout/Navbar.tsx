@@ -6,20 +6,23 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Search, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-const navLinks = [
-  { name: "Services", href: "/services" },
-  { name: "Solutions", href: "/solutions" },
-  { name: "Case Studies", href: "/case-studies" },
-  { name: "Hub", href: "/hub" },
-  { name: "Blog", href: "/blog" },
-  { name: "About", href: "/about" },
-];
+import { useI18n } from "@/lib/i18n";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showLangs, setShowLangs] = useState(false);
   const pathname = usePathname();
+  const { lang, setLang, t } = useI18n();
+
+  const navLinks = [
+    { name: t("nav_services"), href: "/services" },
+    { name: t("nav_solutions"), href: "/solutions" },
+    { name: t("nav_case_studies"), href: "/case-studies" },
+    { name: t("nav_hub"), href: "/hub" },
+    { name: t("nav_blog"), href: "/blog" },
+    { name: t("nav_about"), href: "/about" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,6 +31,12 @@ export const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const languages = [
+    { code: "en", name: "English" },
+    { code: "ar", name: "العربية" },
+    { code: "hi", name: "हिन्दी" }
+  ];
 
   return (
     <nav
@@ -53,7 +62,7 @@ export const Navbar = () => {
             <div className="w-10 h-10 bg-qbf-white border border-qbf-divider rounded-full flex items-center justify-center group-hover:border-qbf-orange transition-all">
               <Search size={18} />
             </div>
-            <span className="text-sm font-bold uppercase tracking-widest">Search</span>
+            <span className="text-sm font-bold uppercase tracking-widest">{lang === 'en' ? 'Search' : lang === 'ar' ? 'بحث' : 'खोज'}</span>
           </Link>
         </div>
 
@@ -73,14 +82,47 @@ export const Navbar = () => {
               {link.name}
             </Link>
           ))}
-          <div className="flex items-center gap-2 text-qbf-gray font-bold text-xs uppercase tracking-widest cursor-pointer hover:text-qbf-orange transition-colors">
-            <Globe size={16} /> EN
+
+          <div className="relative">
+            <button
+              onClick={() => setShowLangs(!showLangs)}
+              className="flex items-center gap-2 text-qbf-gray font-bold text-xs uppercase tracking-widest cursor-pointer hover:text-qbf-orange transition-colors"
+            >
+              <Globe size={16} /> {lang}
+            </button>
+            <AnimatePresence>
+              {showLangs && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  className="absolute right-0 mt-4 bg-white border border-qbf-divider rounded-2xl p-2 shadow-2xl min-w-[120px]"
+                >
+                  {languages.map((l) => (
+                    <button
+                      key={l.code}
+                      onClick={() => {
+                        setLang(l.code as any);
+                        setShowLangs(false);
+                      }}
+                      className={cn(
+                        "w-full text-left px-4 py-2 rounded-xl text-sm font-bold transition-all",
+                        lang === l.code ? "bg-qbf-orange text-white" : "text-qbf-gray hover:bg-qbf-white hover:text-qbf-black"
+                      )}
+                    >
+                      {l.name}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
+
           <Link
             href="/contact"
             className="bg-qbf-orange text-white px-5 py-2.5 rounded-full text-sm font-bold hover:opacity-90 transition-opacity"
           >
-            Talk to Us
+            {t("nav_cta")}
           </Link>
         </div>
 
@@ -118,12 +160,23 @@ export const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
+              <div className="flex gap-4 py-4 border-y border-qbf-divider">
+                {languages.map(l => (
+                  <button
+                    key={l.code}
+                    onClick={() => setLang(l.code as any)}
+                    className={cn("text-xs font-bold uppercase tracking-widest", lang === l.code ? "text-qbf-orange" : "text-qbf-gray")}
+                  >
+                    {l.code}
+                  </button>
+                ))}
+              </div>
               <Link
                 href="/contact"
                 onClick={() => setIsOpen(false)}
                 className="bg-qbf-orange text-white text-center px-5 py-3 rounded-xl font-bold"
               >
-                Talk to Us
+                {t("nav_cta")}
               </Link>
             </div>
           </motion.div>
