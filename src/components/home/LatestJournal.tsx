@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { findAll } from "@/lib/db";
+import { readData } from "@/lib/db";
 
 interface Post {
   slug: string;
@@ -23,7 +23,7 @@ function formatDate(value?: string) {
 }
 
 export const LatestJournal = async () => {
-  const all = await findAll<Post>("posts");
+  const all = readData<Post>("posts");
   const posts = all
     .filter((p) => p.status !== "draft")
     .sort((a, b) => {

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Calendar, Plus, Pencil, MapPin } from "lucide-react";
-import { findAll } from "@/lib/db";
+import { readData } from "@/lib/db";
 
 interface EventItem {
   id?: string;
@@ -17,7 +17,7 @@ interface EventItem {
 }
 
 export default async function EventsAdminPage() {
-  const events = (await findAll<EventItem>("events")).sort((a, b) => {
+  const events = readData<EventItem>("events").sort((a, b) => {
     const ta = new Date(a.startDate || 0).getTime();
     const tb = new Date(b.startDate || 0).getTime();
     return tb - ta;

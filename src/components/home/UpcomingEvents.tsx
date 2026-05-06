@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Calendar, MapPin } from "lucide-react";
-import { findAll } from "@/lib/db";
+import { readData } from "@/lib/db";
 
 interface EventItem {
   slug: string;
@@ -32,7 +32,7 @@ function splitDate(iso?: string) {
 }
 
 export const UpcomingEvents = async () => {
-  const all = await findAll<EventItem>("events");
+  const all = readData<EventItem>("events");
   const now = Date.now();
   const events = all
     .filter((e) => e.status !== "draft")
