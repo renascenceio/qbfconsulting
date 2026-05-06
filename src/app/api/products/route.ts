@@ -1,23 +1,24 @@
 import { NextResponse } from "next/server";
-import { readData, writeData } from "@/lib/db";
+import { readData, upsertBy, slugify } from "@/lib/db";
 
 export async function GET() {
-  const products = readData("products");
+  const products = await readData("products");
   return NextResponse.json(products);
 }
 
 export async function POST(request: Request) {
   const product = await request.json();
-  const products = readData("products");
+
+  const slug = product.slug?.trim() || slugify(product.name || "untitled-product");
 
   const newProduct = {
     ...product,
-    id: Date.now().toString(),
+    id: product.id || `p_${Date.now()}`,
+    slug,
     createdAt: new Date().toISOString(),
   };
 
-  products.push(newProduct);
-  writeData("products", products);
+  await upsertBy("products", "slug", slug, newProduct);
 
   return NextResponse.json(newProduct);
 }

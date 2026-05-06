@@ -35,13 +35,13 @@ export default function BlogCategoryPage() {
   }, []);
 
   const categories = useMemo(() => {
-    return ["All", ...Array.from(new Set(posts.filter((p) => p.status !== "Draft").map((p) => p.category).filter(Boolean)))];
+    return ["All", ...Array.from(new Set(posts.filter((p) => (p.status || "").toLowerCase() !== "draft").map((p) => p.category).filter(Boolean)))];
   }, [posts]);
 
   const filteredPosts = useMemo(() => {
     const q = search.trim().toLowerCase();
     return posts
-      .filter((p) => p.status !== "Draft")
+      .filter((p) => (p.status || "").toLowerCase() !== "draft")
       .filter((p) => activeFilter === "All" || p.category === activeFilter)
       .filter((p) => {
         if (!q) return true;

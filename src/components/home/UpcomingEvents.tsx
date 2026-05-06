@@ -32,7 +32,7 @@ function splitDate(iso?: string) {
 }
 
 export const UpcomingEvents = async () => {
-  const all = readData<EventItem>("events");
+  const all = await readData<EventItem>("events");
   const now = Date.now();
   const events = all
     .filter((e) => e.status !== "draft")

@@ -1,0 +1,12 @@
+{
+  "newsletter": {
+    "welcomeSequence": true,
+    "weeklyDigest": false,
+    "providerApiKey": ""
+  },
+  "languages": {
+    "en": true,
+    "ar": false,
+    "hi": false
+  }
+}

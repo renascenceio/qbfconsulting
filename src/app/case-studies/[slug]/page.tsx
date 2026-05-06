@@ -8,13 +8,13 @@ import {
 import type { Metadata } from "next";
 
 export async function generateStaticParams() {
-  const items: any[] = readData("case-studies");
+  const items: any[] = await readData("case-studies");
   return items.map((s: any) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const study: any = findBy("case-studies", "slug", slug);
+  const study: any = await findBy("case-studies", "slug", slug);
   if (!study) return { title: "Case Study | QBF Consulting" };
   return {
     title: `${study.title} | QBF Consulting`,
@@ -30,11 +30,11 @@ export default async function CaseStudyDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const study: any = findBy("case-studies", "slug", slug);
+  const study: any = await findBy("case-studies", "slug", slug);
 
   if (!study) notFound();
 
-  const allStudies: any[] = readData("case-studies");
+  const allStudies: any[] = await readData("case-studies");
   const related = allStudies
     .filter((s: any) => s.slug !== study.slug && s.status !== "Draft")
     .slice(0, 3);

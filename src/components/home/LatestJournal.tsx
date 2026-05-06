@@ -23,9 +23,9 @@ function formatDate(value?: string) {
 }
 
 export const LatestJournal = async () => {
-  const all = readData<Post>("posts");
+  const all = await readData<Post>("posts");
   const posts = all
-    .filter((p) => p.status !== "draft")
+    .filter((p) => (p.status || "").toLowerCase() !== "draft")
     .sort((a, b) => {
       const da = new Date(a.publishedAt || a.date || 0).getTime();
       const db = new Date(b.publishedAt || b.date || 0).getTime();

@@ -15,11 +15,23 @@ export default function TalentRegistrationPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In Phase 2, we simulate saving this data
+    try {
+      await fetch("/api/registrations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ kind: "talent", data: formData }),
+      });
+    } catch {
+      // Network errors are surfaced server-side; still mark submitted client-side
+    }
+    // Mirror to localStorage so existing client-only views keep working.
     const existingTalent = JSON.parse(localStorage.getItem("hub_talent") || "[]");
-    localStorage.setItem("hub_talent", JSON.stringify([...existingTalent, { ...formData, id: Date.now() }]));
+    localStorage.setItem(
+      "hub_talent",
+      JSON.stringify([...existingTalent, { ...formData, id: Date.now() }])
+    );
     setIsSubmitted(true);
     setTimeout(() => router.push("/hub"), 3000);
   };

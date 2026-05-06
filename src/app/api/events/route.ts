@@ -1,14 +1,14 @@
 import { NextResponse } from "next/server";
-import { readData, writeData, slugify } from "@/lib/db";
+import { readData, upsertBy, slugify } from "@/lib/db";
 
 export async function GET() {
-  const items = readData("events");
+  const items = await readData("events");
   return NextResponse.json(items);
 }
 
 export async function POST(req: Request) {
   const body = await req.json();
-  const items = readData<any>("events");
+  const items = await readData<any>("events");
 
   const baseSlug = body.slug ? slugify(body.slug) : slugify(body.title || "event");
   let slug = baseSlug;
@@ -45,7 +45,6 @@ export async function POST(req: Request) {
     createdAt: new Date().toISOString(),
   };
 
-  items.push(event);
-  writeData("events", items);
+  await upsertBy("events", "slug", slug, event);
   return NextResponse.json(event, { status: 201 });
 }

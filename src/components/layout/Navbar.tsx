@@ -15,14 +15,19 @@ export const Navbar = () => {
   const pathname = usePathname();
   const { lang, setLang, t } = useI18n();
 
+  const tt = (key: string, fallback: string) => {
+    const v = t(key);
+    return !v || v === key ? fallback : v;
+  };
+
   const navLinks = [
-    { name: t("nav_services"), href: "/services" },
-    { name: t("nav_solutions"), href: "/solutions" },
-    { name: t("nav_case_studies"), href: "/case-studies" },
-    { name: t("nav_hub"), href: "/hub" },
-    { name: t("nav_events") || "Events", href: "/events" },
-    { name: t("nav_blog"), href: "/blog" },
-    { name: t("nav_about"), href: "/about" },
+    { name: tt("nav_services", "Services"), href: "/services" },
+    { name: tt("nav_solutions", "Solutions"), href: "/solutions" },
+    { name: tt("nav_case_studies", "Case Studies"), href: "/case-studies" },
+    { name: tt("nav_hub", "Hub"), href: "/hub" },
+    { name: tt("nav_events", "Events"), href: "/events" },
+    { name: tt("nav_blog", "Blog"), href: "/blog" },
+    { name: tt("nav_about", "About"), href: "/about" },
   ];
 
   useEffect(() => {

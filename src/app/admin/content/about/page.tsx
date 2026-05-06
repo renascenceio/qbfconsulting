@@ -12,8 +12,8 @@ type PageContent = {
 
 export const dynamic = "force-dynamic";
 
-export default function AdminAboutPage() {
-  const pages = readData<PageContent>("pages").filter((p) =>
+export default async function AdminAboutPage() {
+  const pages = (await readData<PageContent>("pages")).filter((p) =>
     p.slug === "about" || p.slug === "about-company" || p.slug === "about-founder"
   );
 

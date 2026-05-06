@@ -1,0 +1,42 @@
+[
+  {
+    "id": "p_001",
+    "slug": "clmp-certification",
+    "name": "CLMP Certification Programme",
+    "category": "CLMP",
+    "price": "$2,400",
+    "description": "The Certified Loyalty Marketing Professional programme is a six-week cohort-based certification covering programme design, technology selection, P&L modelling, partner economics, and operations. Live cohorts run quarterly in London and Dubai with virtual attendance available.\n\nIncludes: 12 live sessions, capstone project, 1:1 mentoring with the QBF faculty, and lifetime access to the alumni community.",
+    "status": "Published",
+    "createdAt": "2024-01-15T08:00:00.000Z"
+  },
+  {
+    "id": "p_002",
+    "slug": "loyalty-strategy-workshop",
+    "name": "Loyalty Strategy Workshop",
+    "category": "Workshop",
+    "price": "$8,500",
+    "description": "A two-day intensive workshop run on-site for executive teams. We diagnose your current programme, stress-test the economics, and leave you with a concrete 100-day action plan. Maximum 12 participants per session.",
+    "status": "Published",
+    "createdAt": "2024-02-08T08:00:00.000Z"
+  },
+  {
+    "id": "p_003",
+    "slug": "fundamentals-training",
+    "name": "Loyalty Fundamentals Training",
+    "category": "Training",
+    "price": "$495",
+    "description": "An on-demand training track for marketing and CRM teams new to loyalty. Eight modules covering strategy, mechanics, technology, and analytics. Self-paced, with an optional live Q&A every month.",
+    "status": "Published",
+    "createdAt": "2024-03-04T08:00:00.000Z"
+  },
+  {
+    "id": "p_004",
+    "slug": "program-health-check",
+    "name": "Programme Health Check",
+    "category": "Strategic Solution",
+    "price": "From $25,000",
+    "description": "A six-week diagnostic that benchmarks your loyalty programme against industry leaders, surfaces the top financial risks, and delivers a board-ready prioritisation matrix. Ideal for programmes with 500K+ active members.",
+    "status": "Published",
+    "createdAt": "2024-03-18T08:00:00.000Z"
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "c_001",
+    "slug": "senior-loyalty-strategist",
+    "title": "Senior Loyalty Strategist",
+    "department": "Strategy",
+    "location": "London / Remote",
+    "type": "Full-time",
+    "description": "Lead end-to-end loyalty strategy engagements for global retail and aviation clients. Own the diagnostic, design, and roadmap phases. Work directly with the founder on programme P&L modelling, partner economics, and board-level recommendations.\n\nWe are looking for someone with 6+ years of loyalty strategy experience, ideally inside a top-tier consultancy or as an in-house program owner. Exposure to GCC markets is a strong plus.",
+    "status": "Active",
+    "date": "April 22, 2024",
+    "createdAt": "2024-04-22T08:00:00.000Z"
+  },
+  {
+    "id": "c_002",
+    "slug": "loyalty-implementation-lead",
+    "title": "Loyalty Implementation Lead",
+    "department": "Implementation",
+    "location": "Dubai",
+    "type": "Full-time",
+    "description": "Run multi-vendor loyalty platform implementations from kickoff to first reward. You will manage technology partners, integration teams, and client product owners through a structured 90-day playbook.\n\nMust have hands-on experience with at least two of: Salesforce Loyalty, Antavo, Talon.One, Comarch, SAP. Bilingual English/Arabic preferred but not required.",
+    "status": "Active",
+    "date": "April 10, 2024",
+    "createdAt": "2024-04-10T08:00:00.000Z"
+  },
+  {
+    "id": "c_003",
+    "slug": "loyalty-data-analyst",
+    "title": "Loyalty Data Analyst",
+    "department": "Tech",
+    "location": "Remote",
+    "type": "Contract",
+    "description": "Build the analytical backbone of our consulting engagements. SQL fluency is non-negotiable; Python and dbt are pluses. You will work on liability modelling, segmentation, RFM analysis, and incrementality testing across client datasets.",
+    "status": "Active",
+    "date": "March 28, 2024",
+    "createdAt": "2024-03-28T08:00:00.000Z"
+  }
+]

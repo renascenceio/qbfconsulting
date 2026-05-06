@@ -16,7 +16,7 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 export async function generateMetadata(): Promise<Metadata> {
-  const page: any = findBy("pages", "slug", "solutions");
+  const page: any = await findBy("pages", "slug", "solutions");
   return {
     title: page?.seoTitle || "Loyalty Solutions | QBF Consulting",
     description: page?.seoDescription || "Productised loyalty solutions from QBF Consulting.",
@@ -24,8 +24,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function SolutionsPage() {
-  const page: any = findBy("pages", "slug", "solutions") || {};
-  const solutions: any[] = readData("solutions")
+  const page: any = (await findBy("pages", "slug", "solutions")) || {};
+  const solutions: any[] = (await readData<any>("solutions"))
     .filter((s: any) => s.status !== "Draft")
     .sort((a: any, b: any) => (a.order || 99) - (b.order || 99));
 

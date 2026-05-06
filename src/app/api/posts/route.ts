@@ -1,15 +1,14 @@
 import { NextResponse } from "next/server";
-import { readData, writeData, slugify } from "@/lib/db";
+import { readData, upsertBy, slugify } from "@/lib/db";
 
 export async function GET() {
-  const posts = readData("posts");
+  const posts = await readData<any>("posts");
   posts.sort((a: any, b: any) => (b.createdAt || "").localeCompare(a.createdAt || ""));
   return NextResponse.json(posts);
 }
 
 export async function POST(request: Request) {
   const post = await request.json();
-  const posts = readData("posts");
 
   const slug = post.slug?.trim() || slugify(post.title || "untitled");
 
@@ -20,8 +19,7 @@ export async function POST(request: Request) {
     createdAt: new Date().toISOString(),
   };
 
-  posts.push(newPost);
-  writeData("posts", posts);
+  await upsertBy("posts", "slug", slug, newPost);
 
   return NextResponse.json(newPost);
 }

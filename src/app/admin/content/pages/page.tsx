@@ -12,8 +12,8 @@ type PageContent = {
 
 export const dynamic = "force-dynamic";
 
-export default function AdminPagesList() {
-  const pages = readData<PageContent>("pages");
+export default async function AdminPagesList() {
+  const pages = await readData<PageContent>("pages");
 
   return (
     <div className="space-y-8">

@@ -4,15 +4,15 @@ import { Linkedin } from "lucide-react";
 import { findBy } from "@/lib/db";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const page: any = findBy("pages", "slug", "about-founder");
+  const page: any = await findBy("pages", "slug", "about-founder");
   return {
     title: page?.seoTitle || "Founder | QBF Consulting",
     description: page?.seoDescription || "Founder of QBF Consulting.",
   };
 }
 
-export default function FounderPage() {
-  const page: any = findBy("pages", "slug", "about-founder") || {};
+export default async function FounderPage() {
+  const page: any = (await findBy("pages", "slug", "about-founder")) || {};
 
   return (
     <div className="bg-qbf-white min-h-screen">

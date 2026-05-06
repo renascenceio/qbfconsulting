@@ -15,8 +15,8 @@ type Props = {
   variant?: "default" | "compact";
 };
 
-export function EditablePageHero({ slug, fallback, align = "left", variant = "default" }: Props) {
-  const page = findBy<PageContent>("pages", "slug", slug);
+export async function EditablePageHero({ slug, fallback, align = "left", variant = "default" }: Props) {
+  const page = await findBy<PageContent>("pages", "slug", slug);
   const heroTitle = page?.heroTitle || fallback.heroTitle;
   const heroSubtitle = page?.heroSubtitle || fallback.heroSubtitle;
   const intro = page?.intro || fallback.intro;

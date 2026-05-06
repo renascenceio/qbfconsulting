@@ -1,15 +1,15 @@
 import { NextResponse } from "next/server";
-import { readData, writeData, slugify } from "@/lib/db";
+import { readData, upsertBy, slugify } from "@/lib/db";
 
 export async function GET() {
-  const items = readData("solutions");
+  const items = await readData<any>("solutions");
   items.sort((a: any, b: any) => (a.order || 99) - (b.order || 99));
   return NextResponse.json(items);
 }
 
 export async function POST(request: Request) {
   const body = await request.json();
-  const items = readData("solutions");
+  const items = await readData<any>("solutions");
 
   const slug = body.slug?.trim() || slugify(body.title || "solution");
 
@@ -32,8 +32,7 @@ export async function POST(request: Request) {
     createdAt: new Date().toISOString(),
   };
 
-  items.push(next);
-  writeData("solutions", items);
+  await upsertBy("solutions", "slug", slug, next);
 
   return NextResponse.json(next);
 }
