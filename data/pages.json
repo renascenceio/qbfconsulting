@@ -60,6 +60,16 @@
     "seoDescription": "The QBF loyalty community hub for practitioners. Frameworks, reports, and a global network."
   },
   {
+    "slug": "about",
+    "name": "About",
+    "path": "/about",
+    "heroTitle": "About QBF Consulting.",
+    "heroSubtitle": "We are a loyalty consulting practice built for boards, P&Ls, and the practitioners who have to make programs work in the real world.",
+    "intro": "Two decades of practitioner experience, a community of operators we run with, and a single conviction: loyalty programs should earn their place on the P&L.",
+    "seoTitle": "About | QBF Consulting",
+    "seoDescription": "QBF Consulting is a loyalty consulting practice built for boards, P&Ls, and operators. Our story, mission, and team."
+  },
+  {
     "slug": "about-company",
     "name": "About / Company",
     "path": "/about/company",
