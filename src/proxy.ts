@@ -1,23 +1,12 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { updateSession } from "@/lib/supabase/session";
+import { type NextRequest } from "next/server";
 
-export function proxy(request: NextRequest) {
-  const path = request.nextUrl.pathname;
-
-  // Define protected routes
-  const isProtectedRoute = path.startsWith("/admin");
-
-  if (isProtectedRoute) {
-    const session = request.cookies.get("admin_session")?.value;
-
-    if (!session) {
-      return NextResponse.redirect(new URL("/login", request.url));
-    }
-  }
-
-  return NextResponse.next();
+export async function proxy(request: NextRequest) {
+  return await updateSession(request);
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: [
+    "/((?!_next/static|_next/image|favicon.ico|api/.*|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+  ],
 };
