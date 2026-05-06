@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { findBy } from "@/lib/db";
+import { createServiceClient } from "@/lib/supabase/server";
 import { UserEditor } from "@/components/admin/UserEditor";
 
 export default async function EditUserPage({
@@ -8,7 +8,13 @@ export default async function EditUserPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const user = await findBy<any>("users", "id", id);
+  const supabase = createServiceClient();
+  const { data: user } = await supabase
+    .from("profiles")
+    .select("id, name, email, role, status")
+    .eq("id", id)
+    .maybeSingle();
+
   if (!user) notFound();
 
   return (
