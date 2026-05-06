@@ -1,0 +1,182 @@
+[
+  {
+    "slug": "home",
+    "name": "Home",
+    "path": "/",
+    "heroTitle": "Loyalty programs that earn their place on the P&L.",
+    "heroSubtitle": "QBF Consulting helps the world's most ambitious brands design, build, and run loyalty programs that move the metrics that matter.",
+    "intro": "",
+    "seoTitle": "QBF Consulting | Loyalty Strategy, Implementation & Management",
+    "seoDescription": "QBF Consulting designs, builds, and runs loyalty programs for ambitious global brands. Strategy, implementation, management, and education."
+  },
+  {
+    "slug": "services",
+    "name": "Services",
+    "path": "/services",
+    "heroTitle": "Our Services.",
+    "heroSubtitle": "End-to-end expertise for modern loyalty programs, from initial strategy to ongoing management.",
+    "intro": "We work alongside your team across three core service lines, sequenced or combined depending on where you are on the journey.",
+    "seoTitle": "Loyalty Consulting Services | QBF Consulting",
+    "seoDescription": "Loyalty program strategy, implementation, and management services from QBF Consulting."
+  },
+  {
+    "slug": "solutions",
+    "name": "Solutions",
+    "path": "/solutions",
+    "heroTitle": "Loyalty Solutions.",
+    "heroSubtitle": "Packaged engagements that solve specific loyalty challenges, with clear scope, deliverables, and timelines.",
+    "intro": "Each solution below is a productised engagement we have run multiple times. They are designed to start fast, deliver measurable outcomes, and slot into your existing roadmap.",
+    "seoTitle": "Loyalty Management Solutions | QBF Consulting",
+    "seoDescription": "Productised loyalty solutions including health checks, tech evaluation, coalition design, AI pilots, and internal academies."
+  },
+  {
+    "slug": "case-studies",
+    "name": "Case Studies",
+    "path": "/case-studies",
+    "heroTitle": "Case Studies.",
+    "heroSubtitle": "Real-world examples of how we have helped global brands build measurable business value through loyalty.",
+    "intro": "Filter by sector, region, or service line. Every case study below is grounded in published metrics and references we are happy to share on request.",
+    "seoTitle": "Case Studies | QBF Consulting",
+    "seoDescription": "Loyalty consulting case studies across retail, aviation, hospitality, telecoms, and financial services."
+  },
+  {
+    "slug": "blog",
+    "name": "The Journal",
+    "path": "/blog",
+    "heroTitle": "The Journal.",
+    "heroSubtitle": "In-depth analysis, strategic advice, and the latest trends across the world of customer loyalty.",
+    "intro": "",
+    "seoTitle": "The Journal | QBF Consulting",
+    "seoDescription": "Loyalty insights, frameworks, and trends from the QBF Consulting team."
+  },
+  {
+    "slug": "hub",
+    "name": "Hub",
+    "path": "/hub",
+    "heroTitle": "The Loyalty Hub.",
+    "heroSubtitle": "A community destination for loyalty practitioners to grow, learn, and ship.",
+    "intro": "Frameworks, reports, and a network of practitioners moving the industry forward.",
+    "seoTitle": "Loyalty Hub | QBF Consulting",
+    "seoDescription": "The QBF loyalty community hub for practitioners. Frameworks, reports, and a global network."
+  },
+  {
+    "slug": "about",
+    "name": "About",
+    "path": "/about",
+    "heroTitle": "About QBF Consulting.",
+    "heroSubtitle": "We are a loyalty consulting practice built for boards, P&Ls, and the practitioners who have to make programs work in the real world.",
+    "intro": "Two decades of practitioner experience, a community of operators we run with, and a single conviction: loyalty programs should earn their place on the P&L.",
+    "seoTitle": "About | QBF Consulting",
+    "seoDescription": "QBF Consulting is a loyalty consulting practice built for boards, P&Ls, and operators. Our story, mission, and team."
+  },
+  {
+    "slug": "about-company",
+    "name": "About / Company",
+    "path": "/about/company",
+    "heroTitle": "The QBF Story.",
+    "heroSubtitle": "We were founded on a single conviction: loyalty programs should be defended on the P&L, not the marketing budget.",
+    "intro": "",
+    "seoTitle": "About QBF Consulting",
+    "seoDescription": "The QBF Consulting story, mission, and team."
+  },
+  {
+    "slug": "about-founder",
+    "name": "About / Founder",
+    "path": "/about/founder",
+    "heroTitle": "Aslan Patov, Founder.",
+    "heroSubtitle": "Two decades shipping loyalty programs that boards still defend.",
+    "intro": "",
+    "seoTitle": "Aslan Patov, Founder | QBF Consulting",
+    "seoDescription": "Aslan Patov, founder of QBF Consulting."
+  },
+  {
+    "slug": "contact",
+    "name": "Contact",
+    "path": "/contact",
+    "heroTitle": "Let's talk loyalty.",
+    "heroSubtitle": "Tell us where you are on the journey and we will route you to the right person on the team.",
+    "intro": "",
+    "seoTitle": "Contact QBF Consulting",
+    "seoDescription": "Get in touch with QBF Consulting."
+  },
+  {
+    "slug": "coverage",
+    "name": "Coverage",
+    "path": "/coverage",
+    "heroTitle": "Where we work.",
+    "heroSubtitle": "QBF Consulting operates across the GCC, Europe, North America, and Asia-Pacific.",
+    "intro": "",
+    "seoTitle": "Global Coverage | QBF Consulting",
+    "seoDescription": "QBF Consulting operates globally across the GCC, EU, US, and APAC."
+  },
+  {
+    "slug": "partners",
+    "name": "Partners",
+    "path": "/partners",
+    "heroTitle": "Our Partners.",
+    "heroSubtitle": "We work with a curated set of technology, media, and academic partners to deliver every engagement.",
+    "intro": "",
+    "seoTitle": "Partners | QBF Consulting",
+    "seoDescription": "QBF Consulting's technology, media, and academic partners."
+  },
+  {
+    "slug": "events",
+    "name": "Events",
+    "path": "/events",
+    "heroTitle": "Events & Workshops.",
+    "heroSubtitle": "Live training, masterclasses, and roundtables across the regions we operate in.",
+    "intro": "",
+    "seoTitle": "Events & Workshops | QBF Consulting",
+    "seoDescription": "Loyalty workshops, masterclasses, and roundtables hosted by QBF Consulting."
+  },
+  {
+    "slug": "media",
+    "name": "Media",
+    "path": "/media",
+    "heroTitle": "QBF in the Media.",
+    "heroSubtitle": "Press, interviews, and contributions from the QBF team across global outlets.",
+    "intro": "",
+    "seoTitle": "Media & Press | QBF Consulting",
+    "seoDescription": "QBF Consulting media coverage, interviews, and contributions."
+  },
+  {
+    "slug": "careers",
+    "name": "Careers",
+    "path": "/careers",
+    "heroTitle": "Join the team.",
+    "heroSubtitle": "Help us build the most defensible loyalty consulting practice in the world.",
+    "intro": "",
+    "seoTitle": "Careers | QBF Consulting",
+    "seoDescription": "Career opportunities at QBF Consulting."
+  },
+  {
+    "slug": "service-strategy",
+    "name": "Service / Strategy",
+    "path": "/services/loyalty-program-strategy",
+    "heroTitle": "Loyalty Program Strategy.",
+    "heroSubtitle": "Long-term loyalty roadmaps that balance business objectives with human behaviour.",
+    "intro": "",
+    "seoTitle": "Loyalty Strategy | QBF Consulting",
+    "seoDescription": "Loyalty program strategy services from QBF Consulting."
+  },
+  {
+    "slug": "service-implementation",
+    "name": "Service / Implementation",
+    "path": "/services/loyalty-program-implementation",
+    "heroTitle": "Loyalty Program Implementation.",
+    "heroSubtitle": "Move from concept to fully operational system. We bridge the gap between design and technology.",
+    "intro": "",
+    "seoTitle": "Loyalty Implementation | QBF Consulting",
+    "seoDescription": "Loyalty program implementation services from QBF Consulting."
+  },
+  {
+    "slug": "service-management",
+    "name": "Service / Management",
+    "path": "/services/loyalty-program-management",
+    "heroTitle": "Loyalty Program Management.",
+    "heroSubtitle": "Ongoing optimisation and performance management to ensure your program keeps delivering value.",
+    "intro": "",
+    "seoTitle": "Loyalty Management | QBF Consulting",
+    "seoDescription": "Loyalty program management services from QBF Consulting."
+  }
+]

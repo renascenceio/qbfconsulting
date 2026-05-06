@@ -1,5 +1,22 @@
 import Link from "next/link";
-import { LayoutDashboard, FileEdit, Users, Settings, LogOut, Search, Bell, Check, Briefcase, Layout, Globe } from "lucide-react";
+import {
+  LayoutDashboard,
+  FileEdit,
+  Users,
+  Settings,
+  LogOut,
+  Search,
+  Bell,
+  Check,
+  Briefcase,
+  Layout,
+  Globe,
+  FileStack,
+  Lightbulb,
+  Trophy,
+  Calendar,
+  Info,
+} from "lucide-react";
 
 export default function AdminLayout({
   children,
@@ -9,30 +26,35 @@ export default function AdminLayout({
   return (
     <div className="flex min-h-screen bg-qbf-white text-qbf-black font-body">
       {/* Sidebar */}
-      <aside className="w-80 bg-qbf-black text-white p-12 border-r border-white/5 flex flex-col h-screen sticky top-0">
-        <Link href="/" className="inline-block mb-16">
+      <aside className="w-80 bg-qbf-black text-white p-12 border-r border-white/5 flex flex-col h-screen sticky top-0 overflow-y-auto">
+        <Link href="/" className="inline-block mb-12">
           <span className="font-display text-4xl font-black">
             QBF<span className="text-qbf-orange">.</span>
           </span>
         </Link>
 
-        <nav className="flex-grow space-y-2">
+        <nav className="flex-grow space-y-1">
           {[
-            { label: "Dashboard", icon: <LayoutDashboard size={20} />, href: "/admin/dashboard" },
-            { label: "Blog Posts", icon: <FileEdit size={20} />, href: "/admin/content/blog" },
-            { label: "Careers", icon: <Briefcase size={20} />, href: "/admin/content/careers" },
-            { label: "Products", icon: <Layout size={20} />, href: "/admin/content/products" },
-            { label: "Translations", icon: <Globe size={20} />, href: "/admin/content/translations" },
-            { label: "Review Queue", icon: <Check size={20} />, href: "/admin/registrations" },
-            { label: "User Management", icon: <Users size={20} />, href: "/admin/users" },
-            { label: "Settings", icon: <Settings size={20} />, href: "/admin/settings" },
+            { label: "Dashboard", icon: <LayoutDashboard size={18} />, href: "/admin/dashboard" },
+            { label: "Pages", icon: <FileStack size={18} />, href: "/admin/content/pages" },
+            { label: "About", icon: <Info size={18} />, href: "/admin/content/about" },
+            { label: "Solutions", icon: <Lightbulb size={18} />, href: "/admin/content/solutions" },
+            { label: "Case Studies", icon: <Trophy size={18} />, href: "/admin/content/case-studies" },
+            { label: "Events", icon: <Calendar size={18} />, href: "/admin/content/events" },
+            { label: "Blog Posts", icon: <FileEdit size={18} />, href: "/admin/content/blog" },
+            { label: "Careers", icon: <Briefcase size={18} />, href: "/admin/content/careers" },
+            { label: "Products", icon: <Layout size={18} />, href: "/admin/content/products" },
+            { label: "Translations", icon: <Globe size={18} />, href: "/admin/content/translations" },
+            { label: "Review Queue", icon: <Check size={18} />, href: "/admin/registrations" },
+            { label: "User Management", icon: <Users size={18} />, href: "/admin/users" },
+            { label: "Settings", icon: <Settings size={18} />, href: "/admin/settings" },
           ].map((item, i) => (
             <Link
               key={i}
               href={item.href}
-              className="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 transition-all group font-bold text-lg"
+              className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-all group font-bold text-sm"
             >
-              <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center shrink-0 border border-white/10 group-hover:border-qbf-orange group-hover:text-qbf-orange transition-all">
+              <div className="w-9 h-9 bg-white/5 rounded-lg flex items-center justify-center shrink-0 border border-white/10 group-hover:border-qbf-orange group-hover:text-qbf-orange transition-all">
                 {item.icon}
               </div>
               {item.label}
@@ -42,10 +64,10 @@ export default function AdminLayout({
 
         <Link
           href="/login"
-          className="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 transition-all group font-bold text-lg mt-auto"
+          className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-all group font-bold text-sm mt-6"
         >
-          <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center shrink-0 border border-white/10 group-hover:border-red-500 group-hover:text-red-500 transition-all">
-            <LogOut size={20} />
+          <div className="w-9 h-9 bg-white/5 rounded-lg flex items-center justify-center shrink-0 border border-white/10 group-hover:border-red-500 group-hover:text-red-500 transition-all">
+            <LogOut size={18} />
           </div>
           Logout
         </Link>

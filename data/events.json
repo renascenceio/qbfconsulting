@@ -1,0 +1,202 @@
+[
+  {
+    "id": "evt-clmp-london-2026",
+    "slug": "clmp-certification-london-jun-2026",
+    "title": "CLMP Certification — Loyalty Marketing Professional",
+    "category": "CLMP",
+    "type": "Certification",
+    "tagline": "The original CLMP curriculum, taught by practitioners. Five days, one cohort, one of the only certifications that boards recognise.",
+    "description": "The Certified Loyalty Marketing Professional (CLMP) credential is the global standard for loyalty operators. Across five intensive days, the QBF cohort covers strategy, economics, technology, behavioural design, and program management — taught by consultants who have run programs at scale, not just advised on them.",
+    "format": "In-person",
+    "location": "London, UK",
+    "venue": "QBF Academy, Mayfair",
+    "startDate": "2026-06-22",
+    "endDate": "2026-06-26",
+    "time": "09:00 – 17:00 BST",
+    "duration": "5 days",
+    "capacity": 24,
+    "seatsLeft": 9,
+    "price": "GBP 4,950",
+    "registrationUrl": "/contact",
+    "speakers": [
+      { "name": "Aslan Patov", "role": "Founder, QBF Consulting" },
+      { "name": "Priya Menon", "role": "Director, Loyalty Strategy" }
+    ],
+    "agenda": [
+      "Day 1 — Strategy, business case, and member economics",
+      "Day 2 — Behavioural design and earn/burn architecture",
+      "Day 3 — Technology selection, integrations, and data",
+      "Day 4 — Program management, ops, and analytics",
+      "Day 5 — Capstone, exam, and certification"
+    ],
+    "tags": ["Certification", "Strategy", "Five-day", "Cohort"],
+    "status": "Upcoming",
+    "featured": true,
+    "createdAt": "2026-02-12T09:00:00.000Z"
+  },
+  {
+    "id": "evt-clmp-dubai-2026",
+    "slug": "clmp-certification-dubai-oct-2026",
+    "title": "CLMP Certification — Dubai Cohort",
+    "category": "CLMP",
+    "type": "Certification",
+    "tagline": "The full CLMP curriculum, run from our Dubai practice. Optimised for GCC operators with a regional capstone.",
+    "description": "The Dubai cohort runs the full CLMP curriculum with a GCC-specific capstone. Members work on a real loyalty case from the region across the week and present to a panel on the final day.",
+    "format": "In-person",
+    "location": "Dubai, UAE",
+    "venue": "DIFC Innovation Hub",
+    "startDate": "2026-10-12",
+    "endDate": "2026-10-16",
+    "time": "09:00 – 17:00 GST",
+    "duration": "5 days",
+    "capacity": 22,
+    "seatsLeft": 17,
+    "price": "AED 22,500",
+    "registrationUrl": "/contact",
+    "speakers": [
+      { "name": "Aslan Patov", "role": "Founder, QBF Consulting" },
+      { "name": "Yousef Al-Mansoori", "role": "Lead, GCC Practice" }
+    ],
+    "agenda": [
+      "Day 1 — Strategy and regional context",
+      "Day 2 — Behavioural design",
+      "Day 3 — Technology and data",
+      "Day 4 — Program management",
+      "Day 5 — Regional capstone and panel"
+    ],
+    "tags": ["Certification", "GCC", "Cohort"],
+    "status": "Upcoming",
+    "featured": false,
+    "createdAt": "2026-03-04T09:00:00.000Z"
+  },
+  {
+    "id": "evt-workshop-tech-eval",
+    "slug": "loyalty-tech-evaluation-workshop",
+    "title": "Loyalty Tech Evaluation — One-Day Workshop",
+    "category": "Workshop",
+    "type": "Workshop",
+    "tagline": "A working session for teams scoping their next loyalty platform. Walk in with a vendor list, walk out with a defensible shortlist.",
+    "description": "An intensive working session for product, marketing, and tech leads who are about to make a multi-year platform decision. We work through QBF's evaluation framework against your real requirements, score four to six vendors, and leave you with a board-ready recommendation.",
+    "format": "Hybrid",
+    "location": "London, UK",
+    "venue": "QBF Studio (or virtual)",
+    "startDate": "2026-07-09",
+    "endDate": "2026-07-09",
+    "time": "09:30 – 17:00 BST",
+    "duration": "1 day",
+    "capacity": 12,
+    "seatsLeft": 5,
+    "price": "GBP 1,250",
+    "registrationUrl": "/contact",
+    "speakers": [
+      { "name": "Priya Menon", "role": "Director, Loyalty Strategy" }
+    ],
+    "agenda": [
+      "Morning — Framework, requirements, and scoring",
+      "Afternoon — Live vendor evaluation",
+      "Wrap — Recommendation and board-ready output"
+    ],
+    "tags": ["Tech", "Workshop", "Hybrid"],
+    "status": "Upcoming",
+    "featured": false,
+    "createdAt": "2026-04-15T09:00:00.000Z"
+  },
+  {
+    "id": "evt-masterclass-economics",
+    "slug": "loyalty-economics-masterclass",
+    "title": "Loyalty Economics Masterclass",
+    "category": "Masterclass",
+    "type": "Masterclass",
+    "tagline": "Half-day deep dive on the unit economics of loyalty programs. For finance, strategy, and CRM leads who need to defend the P&L line.",
+    "description": "A half-day masterclass on member-level economics, breakage, redemption health, and incrementality. Designed for finance partners, strategy leads, and CRM directors who need to explain — and defend — the program's contribution to margin.",
+    "format": "Virtual",
+    "location": "Online",
+    "venue": "Zoom",
+    "startDate": "2026-05-21",
+    "endDate": "2026-05-21",
+    "time": "13:00 – 17:00 GMT",
+    "duration": "Half day",
+    "capacity": 40,
+    "seatsLeft": 12,
+    "price": "GBP 450",
+    "registrationUrl": "/contact",
+    "speakers": [
+      { "name": "Aslan Patov", "role": "Founder, QBF Consulting" }
+    ],
+    "agenda": [
+      "Member-level P&L",
+      "Breakage and liability",
+      "Incrementality and uplift",
+      "Q&A and live worked example"
+    ],
+    "tags": ["Economics", "Finance", "Virtual"],
+    "status": "Upcoming",
+    "featured": false,
+    "createdAt": "2026-03-28T09:00:00.000Z"
+  },
+  {
+    "id": "evt-webinar-future-retail",
+    "slug": "future-of-retail-loyalty-webinar",
+    "title": "The Future of Retail Loyalty",
+    "category": "Webinar",
+    "type": "Webinar",
+    "tagline": "A 90-minute panel on where retail loyalty is heading next, with operators from three major retailers.",
+    "description": "A free 90-minute panel discussion on the next decade of retail loyalty. Three program owners join QBF to debate paid memberships, identity, and the role of agentic AI in member experience.",
+    "format": "Virtual",
+    "location": "Online",
+    "venue": "Webinar",
+    "startDate": "2026-07-12",
+    "endDate": "2026-07-12",
+    "time": "10:00 – 11:30 BST",
+    "duration": "90 minutes",
+    "capacity": 500,
+    "seatsLeft": 312,
+    "price": "Free",
+    "registrationUrl": "/contact",
+    "speakers": [
+      { "name": "Priya Menon", "role": "Director, Loyalty Strategy" },
+      { "name": "Industry Panel", "role": "Three program owners" }
+    ],
+    "agenda": [
+      "Panel introductions",
+      "Trend debate — paid, identity, agentic AI",
+      "Audience Q&A"
+    ],
+    "tags": ["Retail", "Free", "Panel"],
+    "status": "Upcoming",
+    "featured": false,
+    "createdAt": "2026-04-02T09:00:00.000Z"
+  },
+  {
+    "id": "evt-roundtable-cmo",
+    "slug": "cmo-roundtable-london-sept-2026",
+    "title": "Loyalty CMO Roundtable — London",
+    "category": "Roundtable",
+    "type": "Roundtable",
+    "tagline": "Invite-only roundtable for senior loyalty owners. Chatham House rules, twelve seats, one shared agenda.",
+    "description": "An invite-only, twelve-seat roundtable for senior loyalty owners across retail, hospitality, aviation, and financial services. Chatham House rules, one shared agenda, and a written synthesis circulated to attendees only.",
+    "format": "In-person",
+    "location": "London, UK",
+    "venue": "Private Members Club, Mayfair",
+    "startDate": "2026-09-18",
+    "endDate": "2026-09-18",
+    "time": "16:00 – 20:00 BST",
+    "duration": "Half day + dinner",
+    "capacity": 12,
+    "seatsLeft": 4,
+    "price": "By invitation",
+    "registrationUrl": "/contact",
+    "speakers": [
+      { "name": "Aslan Patov", "role": "Founder, QBF Consulting" }
+    ],
+    "agenda": [
+      "Welcome and Chatham rules",
+      "Three-topic debate, attendee-led",
+      "Working dinner"
+    ],
+    "tags": ["Invite-only", "Senior", "Off-the-record"],
+    "status": "Upcoming",
+    "featured": false,
+    "createdAt": "2026-04-22T09:00:00.000Z"
+  }
+]

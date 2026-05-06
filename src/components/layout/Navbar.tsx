@@ -20,6 +20,7 @@ export const Navbar = () => {
     { name: t("nav_solutions"), href: "/solutions" },
     { name: t("nav_case_studies"), href: "/case-studies" },
     { name: t("nav_hub"), href: "/hub" },
+    { name: t("nav_events") || "Events", href: "/events" },
     { name: t("nav_blog"), href: "/blog" },
     { name: t("nav_about"), href: "/about" },
   ];
