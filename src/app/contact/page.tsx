@@ -1,18 +1,37 @@
+import type { Metadata } from "next";
 import { Mail, Phone, MapPin, Linkedin, Twitter } from "lucide-react";
+import { findBy } from "@/lib/db";
 
-export default function ContactPage() {
+export async function generateMetadata(): Promise<Metadata> {
+  const page: any = await findBy("pages", "slug", "contact");
+  return {
+    title: page?.seoTitle || "Contact | QBF Consulting",
+    description: page?.seoDescription || "Get in touch with QBF Consulting.",
+  };
+}
+
+export default async function ContactPage() {
+  const page: any = (await findBy("pages", "slug", "contact")) || {};
+  const heroTitle = page.heroTitle || "Talk to Us.";
+  const heroSubtitle =
+    page.heroSubtitle ||
+    "Ready to build a loyalty program that works? We'd love to hear from you.";
+
   return (
     <div className="section-padding bg-qbf-white min-h-screen">
       <div className="max-content">
         <div className="max-w-4xl mb-20">
-          <h1 className="text-5xl md:text-7xl font-display font-black text-qbf-black mb-8 leading-tight">
-            Talk <br />
-            <span className="text-qbf-orange">to Us.</span>
+          <h1 className="text-5xl md:text-7xl font-display font-black text-qbf-black mb-8 leading-tight text-balance">
+            {heroTitle}
           </h1>
-          <p className="text-2xl text-qbf-gray leading-relaxed max-w-2xl">
-            Ready to build a loyalty program that works? We'd love to hear
-            from you.
+          <p className="text-2xl text-qbf-gray leading-relaxed max-w-2xl text-pretty">
+            {heroSubtitle}
           </p>
+          {page.intro ? (
+            <p className="mt-6 text-base md:text-lg text-qbf-gray/90 leading-relaxed max-w-2xl">
+              {page.intro}
+            </p>
+          ) : null}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">

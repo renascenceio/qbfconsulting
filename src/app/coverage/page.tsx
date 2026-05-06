@@ -1,7 +1,25 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, Search, Calendar, MapPin, Play } from "lucide-react";
+import { Search, Play } from "lucide-react";
+import { findBy } from "@/lib/db";
 
-export default function CoverageCategoryPage() {
+export async function generateMetadata(): Promise<Metadata> {
+  const page: any = await findBy("pages", "slug", "coverage");
+  return {
+    title: page?.seoTitle || "Coverage | QBF Consulting",
+    description:
+      page?.seoDescription ||
+      "Recaps, highlights, and photo galleries from the events QBF Consulting attends and hosts.",
+  };
+}
+
+export default async function CoverageCategoryPage() {
+  const page: any = (await findBy("pages", "slug", "coverage")) || {};
+  const heroTitle = page.heroTitle || "Event Coverage.";
+  const heroSubtitle =
+    page.heroSubtitle ||
+    "Recaps, highlights, and photo galleries from the events and workshops we attend and host.";
+
   const coverage = [
     {
       title: "Loyalty Expo 2024 Recap",
@@ -24,14 +42,17 @@ export default function CoverageCategoryPage() {
       <div className="max-content">
         <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-12">
           <div className="max-w-4xl">
-            <h1 className="text-5xl md:text-7xl font-display font-black text-qbf-black mb-8 leading-tight">
-              Event <br />
-              <span className="text-qbf-orange">Coverage.</span>
+            <h1 className="text-5xl md:text-7xl font-display font-black text-qbf-black mb-8 leading-tight text-balance">
+              {heroTitle}
             </h1>
-            <p className="text-2xl text-qbf-gray leading-relaxed max-w-2xl">
-              Recaps, highlights, and photo galleries from the events and
-              workshops we attend and host.
+            <p className="text-2xl text-qbf-gray leading-relaxed max-w-2xl text-pretty">
+              {heroSubtitle}
             </p>
+            {page.intro ? (
+              <p className="mt-6 text-base md:text-lg text-qbf-gray/90 leading-relaxed max-w-2xl">
+                {page.intro}
+              </p>
+            ) : null}
           </div>
           <div className="relative w-full md:w-96">
             <input
@@ -44,13 +65,7 @@ export default function CoverageCategoryPage() {
         </div>
 
         <div className="mb-12 flex gap-4 overflow-x-auto pb-4 scrollbar-hide border-b border-qbf-divider">
-          {[
-            "All",
-            "Conference",
-            "Workshop",
-            "Internal",
-            "Other"
-          ].map((filter) => (
+          {["All", "Conference", "Workshop", "Internal", "Other"].map((filter) => (
             <button
               key={filter}
               className="px-6 py-2 rounded-full font-bold text-sm hover:text-qbf-orange transition-all whitespace-nowrap"

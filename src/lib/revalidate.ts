@@ -54,6 +54,15 @@ export function revalidateCollection(
   }
 }
 
+/** Revalidate every page in the site (used for global content like translations/settings). */
+export function revalidateAll() {
+  try {
+    revalidatePath("/", "layout");
+  } catch {
+    // ignore
+  }
+}
+
 function safeRevalidate(p: string) {
   try {
     revalidatePath(p);

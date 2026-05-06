@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { findBy, upsertBy, deleteBy } from "@/lib/db";
+import { revalidateCollection } from "@/lib/revalidate";
 
 export async function GET(
   _req: Request,
@@ -18,6 +19,7 @@ export async function PUT(
   const { slug } = await params;
   const body = await req.json();
   const updated = await upsertBy("products", "slug", slug, { ...body, slug });
+  revalidateCollection("products", slug);
   return NextResponse.json(updated);
 }
 
@@ -27,5 +29,6 @@ export async function DELETE(
 ) {
   const { slug } = await params;
   const ok = await deleteBy("products", "slug", slug);
+  revalidateCollection("products", slug);
   return NextResponse.json({ ok });
 }

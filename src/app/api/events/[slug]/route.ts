@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { findBy, upsertBy, deleteBy } from "@/lib/db";
+import { revalidateCollection } from "@/lib/revalidate";
 
 export async function GET(_req: Request, { params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -12,6 +13,7 @@ export async function PUT(req: Request, { params }: { params: Promise<{ slug: st
   const { slug } = await params;
   const body = await req.json();
   const updated = await upsertBy("events", "slug", slug, { ...body, slug });
+  revalidateCollection("events", slug);
   return NextResponse.json(updated);
 }
 
@@ -19,5 +21,6 @@ export async function DELETE(_req: Request, { params }: { params: Promise<{ slug
   const { slug } = await params;
   const ok = await deleteBy("events", "slug", slug);
   if (!ok) return NextResponse.json({ error: "Not found" }, { status: 404 });
+  revalidateCollection("events", slug);
   return NextResponse.json({ ok: true });
 }
