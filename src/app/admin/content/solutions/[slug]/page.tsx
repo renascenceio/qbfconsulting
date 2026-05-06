@@ -10,7 +10,7 @@ export default async function EditSolutionPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const solution = findBy("solutions", "slug", slug);
+  const solution = await findBy("solutions", "slug", slug);
   if (!solution) notFound();
   return <SolutionEditor mode="edit" initial={solution} />;
 }

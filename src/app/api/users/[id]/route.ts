@@ -6,7 +6,7 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const user = findBy("users", "id", id);
+  const user = await findBy("users", "id", id);
   if (!user) return NextResponse.json({ error: "Not found" }, { status: 404 });
   return NextResponse.json(user);
 }
@@ -17,7 +17,7 @@ export async function PUT(
 ) {
   const { id } = await params;
   const body = await req.json();
-  const updated = upsertBy("users", "id", id, { ...body, id });
+  const updated = await upsertBy("users", "id", id, { ...body, id });
   return NextResponse.json(updated);
 }
 
@@ -26,6 +26,6 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const ok = deleteBy("users", "id", id);
+  const ok = await deleteBy("users", "id", id);
   return NextResponse.json({ ok });
 }

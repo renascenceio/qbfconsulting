@@ -10,7 +10,7 @@ export default async function EditPagePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const page = findBy<PageContent>("pages", "slug", slug);
+  const page = await findBy<PageContent>("pages", "slug", slug);
   if (!page) return notFound();
   return <PageEditor initial={page} />;
 }

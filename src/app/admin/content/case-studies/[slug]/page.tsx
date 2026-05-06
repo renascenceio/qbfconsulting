@@ -10,7 +10,7 @@ export default async function EditCaseStudyPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const study = findBy("case-studies", "slug", slug);
+  const study = await findBy("case-studies", "slug", slug);
   if (!study) notFound();
   return <CaseStudyEditor mode="edit" initial={study} />;
 }

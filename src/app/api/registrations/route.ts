@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import { readData, writeData } from "@/lib/db";
+import { readData, upsertBy } from "@/lib/db";
 
 export async function GET() {
-  const registrations = readData<any>("registrations");
+  const registrations = await readData<any>("registrations");
   registrations.sort(
     (a: any, b: any) => (b.createdAt || "").localeCompare(a.createdAt || "")
   );
@@ -18,7 +18,6 @@ export async function POST(request: Request) {
     );
   }
 
-  const registrations = readData<any>("registrations");
   const newReg = {
     id: `r_${Date.now()}`,
     kind: body.kind,
@@ -26,7 +25,6 @@ export async function POST(request: Request) {
     data: body.data || {},
     createdAt: new Date().toISOString(),
   };
-  registrations.push(newReg);
-  writeData("registrations", registrations);
+  await upsertBy("registrations", "id", newReg.id, newReg);
   return NextResponse.json(newReg);
 }

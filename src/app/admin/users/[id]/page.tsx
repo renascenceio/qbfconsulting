@@ -8,7 +8,7 @@ export default async function EditUserPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const user = findBy<any>("users", "id", id);
+  const user = await findBy<any>("users", "id", id);
   if (!user) notFound();
 
   return (

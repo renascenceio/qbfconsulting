@@ -17,7 +17,7 @@ interface EventItem {
 }
 
 export default async function EventsAdminPage() {
-  const events = readData<EventItem>("events").sort((a, b) => {
+  const events = (await readData<EventItem>("events")).sort((a, b) => {
     const ta = new Date(a.startDate || 0).getTime();
     const tb = new Date(b.startDate || 0).getTime();
     return tb - ta;

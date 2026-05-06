@@ -13,7 +13,7 @@ import {
 import { findBy } from "@/lib/db";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const page: any = findBy("pages", "slug", "about");
+  const page: any = await findBy("pages", "slug", "about");
   return {
     title: page?.seoTitle || "About | QBF Consulting",
     description:
@@ -22,8 +22,8 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function AboutIndexPage() {
-  const page: any = findBy("pages", "slug", "about") || {};
+export default async function AboutIndexPage() {
+  const page: any = (await findBy("pages", "slug", "about")) || {};
 
   const stats = [
     { label: "Years in market", value: "20+" },

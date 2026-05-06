@@ -28,15 +28,15 @@ const services = [
 ];
 
 export async function generateMetadata(): Promise<Metadata> {
-  const page: any = findBy("pages", "slug", "services");
+  const page: any = await findBy("pages", "slug", "services");
   return {
     title: page?.seoTitle || "Loyalty Consulting Services | QBF Consulting",
     description: page?.seoDescription || "Loyalty program strategy, implementation, and management services.",
   };
 }
 
-export default function ServicesPage() {
-  const page: any = findBy("pages", "slug", "services") || {};
+export default async function ServicesPage() {
+  const page: any = (await findBy("pages", "slug", "services")) || {};
 
   return (
     <div className="bg-qbf-white min-h-screen">

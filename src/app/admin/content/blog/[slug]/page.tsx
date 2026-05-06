@@ -8,7 +8,7 @@ export default async function EditPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = findBy<any>("posts", "slug", slug);
+  const post = await findBy<any>("posts", "slug", slug);
   if (!post) notFound();
 
   return (

@@ -1,16 +1,16 @@
 import { NextResponse } from "next/server";
-import { readData, writeData } from "@/lib/db";
+import { readData, upsertBy } from "@/lib/db";
 
 export async function GET() {
-  const users = readData("users");
+  const users = await readData("users");
   return NextResponse.json(users);
 }
 
 export async function POST(request: Request) {
   const body = await request.json();
-  const users = readData<any>("users");
+  const users = await readData<any>("users");
 
-  if (users.some((u) => u.email?.toLowerCase() === (body.email || "").toLowerCase())) {
+  if (users.some((u: any) => u.email?.toLowerCase() === (body.email || "").toLowerCase())) {
     return NextResponse.json(
       { error: "A user with that email already exists." },
       { status: 409 }
@@ -26,8 +26,7 @@ export async function POST(request: Request) {
     createdAt: new Date().toISOString(),
   };
 
-  users.push(newUser);
-  writeData("users", users);
+  await upsertBy("users", "id", newUser.id, newUser);
 
   return NextResponse.json(newUser);
 }

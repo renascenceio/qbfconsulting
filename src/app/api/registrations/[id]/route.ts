@@ -6,7 +6,7 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const item = findBy("registrations", "id", id);
+  const item = await findBy("registrations", "id", id);
   if (!item) return NextResponse.json({ error: "Not found" }, { status: 404 });
   return NextResponse.json(item);
 }
@@ -17,10 +17,10 @@ export async function PATCH(
 ) {
   const { id } = await params;
   const body = await req.json();
-  const existing = findBy<any>("registrations", "id", id);
+  const existing = await findBy<any>("registrations", "id", id);
   if (!existing)
     return NextResponse.json({ error: "Not found" }, { status: 404 });
-  const updated = upsertBy("registrations", "id", id, {
+  const updated = await upsertBy("registrations", "id", id, {
     ...existing,
     ...body,
     id,
@@ -33,6 +33,6 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const ok = deleteBy("registrations", "id", id);
+  const ok = await deleteBy("registrations", "id", id);
   return NextResponse.json({ ok });
 }

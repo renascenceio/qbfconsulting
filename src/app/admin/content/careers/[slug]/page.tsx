@@ -8,7 +8,7 @@ export default async function EditCareerPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const job = findBy<any>("careers", "slug", slug);
+  const job = await findBy<any>("careers", "slug", slug);
   if (!job) notFound();
 
   return (

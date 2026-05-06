@@ -17,13 +17,13 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 export async function generateStaticParams() {
-  const solutions: any[] = readData("solutions");
+  const solutions: any[] = await readData("solutions");
   return solutions.map((s: any) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const solution: any = findBy("solutions", "slug", slug);
+  const solution: any = await findBy("solutions", "slug", slug);
   if (!solution) return { title: "Solution | QBF Consulting" };
   return {
     title: `${solution.title} | QBF Consulting`,
@@ -39,7 +39,7 @@ export default async function SolutionDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const solution: any = findBy("solutions", "slug", slug);
+  const solution: any = await findBy("solutions", "slug", slug);
 
   if (!solution) {
     notFound();

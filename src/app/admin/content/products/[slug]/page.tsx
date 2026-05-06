@@ -8,7 +8,7 @@ export default async function EditProductPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const product = findBy<any>("products", "slug", slug);
+  const product = await findBy<any>("products", "slug", slug);
   if (!product) notFound();
 
   return (

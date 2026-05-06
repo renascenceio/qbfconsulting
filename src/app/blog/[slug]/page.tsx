@@ -33,7 +33,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = findBy<Post>("posts", "slug", slug);
+  const post = await findBy<Post>("posts", "slug", slug);
   if (!post) {
     return {
       title: "Article not found | QBF Consulting Journal",
@@ -61,13 +61,13 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = findBy<Post>("posts", "slug", slug);
+  const post = await findBy<Post>("posts", "slug", slug);
 
   if (!post || (post.status || "").toLowerCase() === "draft") {
     notFound();
   }
 
-  const all = readData<Post>("posts");
+  const all = await readData<Post>("posts");
   const related = all
     .filter(
       (p) =>

@@ -1,14 +1,13 @@
 import { NextResponse } from "next/server";
-import { readData, writeData, slugify } from "@/lib/db";
+import { readData, upsertBy, slugify } from "@/lib/db";
 
 export async function GET() {
-  const careers = readData("careers");
+  const careers = await readData("careers");
   return NextResponse.json(careers);
 }
 
 export async function POST(request: Request) {
   const job = await request.json();
-  const careers = readData<any>("careers");
 
   const slug = job.slug?.trim() || slugify(job.title || "untitled-role");
 
@@ -19,8 +18,7 @@ export async function POST(request: Request) {
     createdAt: new Date().toISOString(),
   };
 
-  careers.push(newJob);
-  writeData("careers", careers);
+  await upsertBy("careers", "slug", slug, newJob);
 
   return NextResponse.json(newJob);
 }

@@ -60,7 +60,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const ev = findBy<EventItem>("events", "slug", slug);
+  const ev = await findBy<EventItem>("events", "slug", slug);
   if (!ev) return { title: "Event | QBF Consulting" };
   return {
     title: `${ev.title} | QBF Events`,
@@ -74,10 +74,10 @@ export default async function EventDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const event = findBy<EventItem>("events", "slug", slug);
+  const event = await findBy<EventItem>("events", "slug", slug);
   if (!event) return notFound();
 
-  const related = readData<EventItem>("events")
+  const related = (await readData<EventItem>("events"))
     .filter((e) => e.slug !== event.slug && e.status !== "Draft" && e.category === event.category)
     .slice(0, 3);
 

@@ -3,15 +3,15 @@ import { Target, Users, Zap } from "lucide-react";
 import { findBy } from "@/lib/db";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const page: any = findBy("pages", "slug", "about-company");
+  const page: any = await findBy("pages", "slug", "about-company");
   return {
     title: page?.seoTitle || "About QBF Consulting",
     description: page?.seoDescription || "The QBF Consulting story, mission, and team.",
   };
 }
 
-export default function CompanyPage() {
-  const page: any = findBy("pages", "slug", "about-company") || {};
+export default async function CompanyPage() {
+  const page: any = (await findBy("pages", "slug", "about-company")) || {};
 
   const values = [
     {

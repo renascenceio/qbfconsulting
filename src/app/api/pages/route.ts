@@ -2,6 +2,6 @@ import { NextResponse } from "next/server";
 import { readData } from "@/lib/db";
 
 export async function GET() {
-  const items = readData("pages");
+  const items = await readData("pages");
   return NextResponse.json(items);
 }
