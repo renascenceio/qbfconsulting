@@ -1,27 +1,60 @@
 import { NextResponse } from "next/server";
+import { createClient, createServiceClient } from "@/lib/supabase/server";
 
 export async function POST(request: Request) {
-  const body = await request.json();
-  const { email, password } = body;
+  const { email, password } = await request.json();
 
-  // In a real app, these would be in environment variables
-  const ADMIN_EMAIL = "aslan@renascence.io";
-  const ADMIN_PASS = "Admin123!";
-
-  if (email === ADMIN_EMAIL && password === ADMIN_PASS) {
-    const response = NextResponse.json({ success: true });
-
-    // Set a simple cookie for the session
-    response.cookies.set("admin_session", "true", {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      maxAge: 60 * 60 * 24, // 1 day
-      path: "/",
-    });
-
-    return response;
+  if (!email || !password) {
+    return NextResponse.json(
+      { success: false, message: "Email and password are required" },
+      { status: 400 }
+    );
   }
 
-  return NextResponse.json({ success: false, message: "Invalid credentials" }, { status: 401 });
+  const supabase = await createClient();
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email: email.trim().toLowerCase(),
+    password,
+  });
+
+  if (error || !data.user) {
+    return NextResponse.json(
+      { success: false, message: "Invalid credentials" },
+      { status: 401 }
+    );
+  }
+
+  // Verify the user has an admin profile and is Active
+  const service = createServiceClient();
+  const { data: profile } = await service
+    .from("profiles")
+    .select("role, status")
+    .eq("id", data.user.id)
+    .maybeSingle();
+
+  const allowedRoles = new Set(["Super Admin", "Admin", "Editor", "Author"]);
+  if (
+    !profile ||
+    !allowedRoles.has(profile.role) ||
+    profile.status !== "Active"
+  ) {
+    // Sign out — they authenticated but aren't authorised for the admin surface
+    await supabase.auth.signOut();
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Your account does not have admin access.",
+      },
+      { status: 403 }
+    );
+  }
+
+  return NextResponse.json({
+    success: true,
+    user: {
+      id: data.user.id,
+      email: data.user.email,
+      role: profile.role,
+    },
+  });
 }

@@ -26,6 +26,7 @@ export function UserEditor({
   initial: UserInput;
 }) {
   const [user, setUser] = useState<UserInput>(initial);
+  const [password, setPassword] = useState("");
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
@@ -40,10 +41,16 @@ export function UserEditor({
           ? `/api/users/${encodeURIComponent(initial.id || "")}`
           : "/api/users";
       const method = mode === "edit" ? "PUT" : "POST";
+
+      const payload: Record<string, unknown> = { ...user };
+      // Always send password on create. On edit, only if the admin entered one
+      // (so we don't blank out existing passwords).
+      if (password.length > 0) payload.password = password;
+
       const res = await fetch(url, {
         method,
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user),
+        body: JSON.stringify(payload),
       });
       if (!res.ok) {
         const j = await res.json().catch(() => ({}));
@@ -51,8 +58,8 @@ export function UserEditor({
       }
       router.push("/admin/users");
       router.refresh();
-    } catch (err: any) {
-      setError(err?.message || "Failed to save");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to save");
     } finally {
       setIsSaving(false);
     }
@@ -147,9 +154,25 @@ export function UserEditor({
               ))}
             </select>
           </div>
+          <div className="space-y-2 sm:col-span-2">
+            <label className="text-xs font-bold uppercase tracking-widest text-qbf-gray">
+              {mode === "create" ? "Password" : "New Password (leave blank to keep current)"}
+            </label>
+            <input
+              required={mode === "create"}
+              minLength={8}
+              type="password"
+              autoComplete="new-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder={mode === "create" ? "At least 8 characters" : "••••••••"}
+              className="w-full bg-qbf-white border border-qbf-divider px-4 py-3 rounded-lg text-sm font-medium focus:outline-none focus:border-qbf-orange"
+            />
+          </div>
         </div>
         <p className="text-xs text-qbf-gray">
-          Note: roles are stored for the admin record only. Login is currently controlled by the credentials in <code className="font-mono text-qbf-black">/api/auth</code> — wire users to the auth handler to extend access.
+          Users authenticate against Supabase Auth. Roles control admin access:
+          only Active users with role Super Admin / Admin / Editor / Author can sign in.
         </p>
       </div>
     </form>

@@ -16,7 +16,6 @@ const ENTITIES: Record<string, { table: string; key: string }> = {
   pages: { table: "pages", key: "slug" },
   careers: { table: "careers", key: "slug" },
   products: { table: "products", key: "slug" },
-  users: { table: "users", key: "id" },
   registrations: { table: "registrations", key: "id" },
   settings: { table: "settings", key: "key" },
   translations: { table: "translations", key: "locale" },
