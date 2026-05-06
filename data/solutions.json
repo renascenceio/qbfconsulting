@@ -1,0 +1,176 @@
+[
+  {
+    "id": "sol-001",
+    "slug": "loyalty-program-health-check",
+    "title": "Loyalty Program Health Check",
+    "category": "Diagnostic",
+    "icon": "stethoscope",
+    "tagline": "Diagnose what is working, what is not, and where the next dollar should go.",
+    "valueProp": "An intensive audit of your existing loyalty program to identify gaps, opportunities, and the highest-impact next moves.",
+    "covers": [
+      { "title": "Program Audit", "description": "Deep dive into program performance against industry benchmarks and your own targets." },
+      { "title": "Gap Analysis", "description": "Identify the missing engagement opportunities and the unfunded mandates." },
+      { "title": "Tech Assessment", "description": "Evaluate the loyalty stack against the demands of your roadmap." },
+      { "title": "Risk Mitigation", "description": "Surface liability, regulatory, and brand risks before they become headlines." }
+    ],
+    "deliverables": [
+      "Comprehensive Health Check Report",
+      "Gap Analysis Summary",
+      "Prioritised Improvement Roadmap",
+      "Tech Stack Recommendations",
+      "Stakeholder Presentation"
+    ],
+    "duration": "2 weeks",
+    "format": "Workshops + remote analysis",
+    "pricing": "Enquire for pricing",
+    "ctaTitle": "Ready for a health check?",
+    "status": "Published",
+    "order": 1,
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "sol-002",
+    "slug": "loyalty-tech-evaluation",
+    "title": "Loyalty Tech Evaluation",
+    "category": "Diagnostic",
+    "icon": "cpu",
+    "tagline": "Buy the right platform once. Defend the choice for the next five years.",
+    "valueProp": "An objective evaluation of your current loyalty technology stack and a future-proof recommendation backed by live testing, not vendor demos.",
+    "covers": [
+      { "title": "Stack Audit", "description": "Review every layer of your current loyalty architecture and integration topology." },
+      { "title": "Vendor Assessment", "description": "Score active and shortlisted vendors on architecture, AI, and TCO." },
+      { "title": "Gap Analysis", "description": "Identify the technical missing pieces blocking your roadmap." },
+      { "title": "Future-Proofing", "description": "Define the next-generation engagement architecture and migration path." }
+    ],
+    "deliverables": [
+      "Vendor Scorecard",
+      "Architecture Recommendation",
+      "TCO Model (5-Year)",
+      "Migration Plan",
+      "Board-ready Decision Memo"
+    ],
+    "duration": "8 to 12 weeks",
+    "format": "RFP-led with live load tests",
+    "pricing": "Enquire for pricing",
+    "ctaTitle": "Ready to evaluate your stack?",
+    "status": "Published",
+    "order": 2,
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "sol-003",
+    "slug": "loyalty-management-operating-model",
+    "title": "Loyalty Management Operating Model",
+    "category": "Management",
+    "icon": "settings",
+    "tagline": "Stop running loyalty as a marketing line. Run it as a P&L.",
+    "valueProp": "Design a loyalty operating model that ties every action to incremental revenue, defended through a real P&L the CFO will sign off on.",
+    "covers": [
+      { "title": "P&L Architecture", "description": "Build the liability, breakage, redemption, and margin model from the ground up." },
+      { "title": "Ways of Working", "description": "Define decision rights, cadences, and escalation paths between marketing, finance, and tech." },
+      { "title": "Performance KPIs", "description": "Move from vanity metrics to incremental margin per active member." },
+      { "title": "Governance", "description": "Stand up steering committees and reporting that survive leadership changes." }
+    ],
+    "deliverables": [
+      "Operating Model Blueprint",
+      "Loyalty P&L Template",
+      "RACI Matrix",
+      "KPI Definitions",
+      "Quarterly Review Pack"
+    ],
+    "duration": "10 to 14 weeks",
+    "format": "Workshops + embedded support",
+    "pricing": "Enquire for pricing",
+    "ctaTitle": "Ready to professionalise your program?",
+    "status": "Published",
+    "order": 3,
+    "createdAt": "2024-01-15T00:00:00.000Z"
+  },
+  {
+    "id": "sol-004",
+    "slug": "coalition-program-design",
+    "title": "Coalition Program Design",
+    "category": "Strategy",
+    "icon": "users",
+    "tagline": "Multi-brand currencies that protect single-brand value.",
+    "valueProp": "Design a coalition program that works for every participating brand individually and for the group together, with the economics modelled brand by brand.",
+    "covers": [
+      { "title": "Currency Architecture", "description": "Model exchange rates, breakage, and cross-brand earn and burn flows." },
+      { "title": "Brand Equity Protection", "description": "Ensure each brand's program identity and member trust survive the coalition." },
+      { "title": "Partner Negotiation", "description": "Frameworks for fair partner economics that survive renegotiation cycles." },
+      { "title": "Operational Setup", "description": "Define the data, settlement, and customer service flows between participating brands." }
+    ],
+    "deliverables": [
+      "Coalition Currency Model",
+      "Partner Economics Pack",
+      "Brand Protection Playbook",
+      "Operational Blueprint",
+      "Launch Roadmap"
+    ],
+    "duration": "12 to 16 weeks",
+    "format": "Multi-brand workshops + economic modelling",
+    "pricing": "Enquire for pricing",
+    "ctaTitle": "Ready to design a coalition that holds?",
+    "status": "Published",
+    "order": 4,
+    "createdAt": "2024-02-01T00:00:00.000Z"
+  },
+  {
+    "id": "sol-005",
+    "slug": "ai-personalisation-pilot",
+    "title": "AI Personalisation Pilot",
+    "category": "Tech",
+    "icon": "sparkles",
+    "tagline": "Three AI use cases. Defended lift. Real production code.",
+    "valueProp": "Identify the two or three AI use cases that will move your loyalty KPIs, build them against a control group, and ship them into production.",
+    "covers": [
+      { "title": "Use Case Selection", "description": "Pick the AI use cases with the clearest path to measurable lift." },
+      { "title": "Data Readiness", "description": "Audit and prepare the data foundations needed for production AI." },
+      { "title": "Pilot Build", "description": "Build the live pilot with proper experimentation design." },
+      { "title": "Scale Plan", "description": "Define the path from pilot to production-grade, board-defensible deployment." }
+    ],
+    "deliverables": [
+      "Use Case Shortlist",
+      "Data Readiness Report",
+      "Production Pilot",
+      "Lift Measurement Pack",
+      "Scale Roadmap"
+    ],
+    "duration": "12 weeks",
+    "format": "Embedded build team",
+    "pricing": "Enquire for pricing",
+    "ctaTitle": "Ready to ship AI that actually moves the number?",
+    "status": "Published",
+    "order": 5,
+    "createdAt": "2024-02-15T00:00:00.000Z"
+  },
+  {
+    "id": "sol-006",
+    "slug": "loyalty-academy-internal",
+    "title": "Internal Loyalty Academy",
+    "category": "Education",
+    "icon": "book",
+    "tagline": "One language, one playbook, one capability across your markets.",
+    "valueProp": "Build an internal capability program that gives every loyalty leader in your organisation the same vocabulary, frameworks, and measurement standards.",
+    "covers": [
+      { "title": "Curriculum Design", "description": "Custom CLMP-anchored curriculum tuned to your sector and regulatory context." },
+      { "title": "Live Cohort Delivery", "description": "Multi-market cohorts with live coaching from QBF and your senior leaders." },
+      { "title": "Certification", "description": "Formal certification track aligned to CLMP standards." },
+      { "title": "Train-the-Trainer", "description": "Stand up an internal trainer pipeline so the capability survives without us." }
+    ],
+    "deliverables": [
+      "Custom Curriculum",
+      "Cohort Delivery (4 to 8 cohorts)",
+      "Certification Framework",
+      "Internal Trainer Pipeline",
+      "Capability Dashboard"
+    ],
+    "duration": "4 to 6 months",
+    "format": "Hybrid live + asynchronous",
+    "pricing": "Enquire for pricing",
+    "ctaTitle": "Ready to build a loyalty capability that scales?",
+    "status": "Published",
+    "order": 6,
+    "createdAt": "2024-03-01T00:00:00.000Z"
+  }
+]
