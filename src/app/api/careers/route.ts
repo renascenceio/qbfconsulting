@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { readData, writeData } from "@/lib/db";
+import { readData, writeData, slugify } from "@/lib/db";
 
 export async function GET() {
   const careers = readData("careers");
@@ -8,11 +8,14 @@ export async function GET() {
 
 export async function POST(request: Request) {
   const job = await request.json();
-  const careers = readData("careers");
+  const careers = readData<any>("careers");
+
+  const slug = job.slug?.trim() || slugify(job.title || "untitled-role");
 
   const newJob = {
     ...job,
-    id: Date.now().toString(),
+    id: job.id || `c_${Date.now()}`,
+    slug,
     createdAt: new Date().toISOString(),
   };
 

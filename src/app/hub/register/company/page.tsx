@@ -15,10 +15,22 @@ export default function CompanyRegistrationPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    try {
+      await fetch("/api/registrations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ kind: "company", data: formData }),
+      });
+    } catch {
+      // ignore network errors here
+    }
     const existingCompanies = JSON.parse(localStorage.getItem("hub_companies") || "[]");
-    localStorage.setItem("hub_companies", JSON.stringify([...existingCompanies, { ...formData, id: Date.now() }]));
+    localStorage.setItem(
+      "hub_companies",
+      JSON.stringify([...existingCompanies, { ...formData, id: Date.now() }])
+    );
     setIsSubmitted(true);
     setTimeout(() => router.push("/hub"), 3000);
   };
