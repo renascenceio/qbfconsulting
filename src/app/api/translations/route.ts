@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createServiceClient } from "@/lib/supabase/server";
+import { revalidateAll } from "@/lib/revalidate";
 
 /**
  * The /api/translations contract returns/accepts a flat object:
@@ -44,5 +45,6 @@ export async function POST(request: Request) {
     console.error("[translations] write error:", error.message);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
+  revalidateAll();
   return NextResponse.json({ success: true });
 }

@@ -1,6 +1,24 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { findBy } from "@/lib/db";
 
-export default function MediaCategoryPage() {
+export async function generateMetadata(): Promise<Metadata> {
+  const page: any = await findBy("pages", "slug", "media");
+  return {
+    title: page?.seoTitle || "Media & Press | QBF Consulting",
+    description:
+      page?.seoDescription ||
+      "Press, interviews, and contributed articles from QBF Consulting.",
+  };
+}
+
+export default async function MediaCategoryPage() {
+  const page: any = (await findBy("pages", "slug", "media")) || {};
+  const heroTitle = page.heroTitle || "Media Coverage.";
+  const heroSubtitle =
+    page.heroSubtitle ||
+    "Latest press, interviews, and contributed articles from QBF Consulting.";
+
   const mediaItems = [
     {
       publication: "Forbes",
@@ -29,13 +47,17 @@ export default function MediaCategoryPage() {
     <div className="section-padding bg-qbf-white min-h-screen">
       <div className="max-content">
         <div className="max-w-4xl mb-20">
-          <h1 className="text-5xl md:text-7xl font-display font-black text-qbf-black mb-8 leading-tight">
-            Media <br />
-            <span className="text-qbf-orange">Coverage.</span>
+          <h1 className="text-5xl md:text-7xl font-display font-black text-qbf-black mb-8 leading-tight text-balance">
+            {heroTitle}
           </h1>
-          <p className="text-2xl text-qbf-gray leading-relaxed max-w-2xl">
-            Latest press, interviews, and contributed articles from QBF Consulting.
+          <p className="text-2xl text-qbf-gray leading-relaxed max-w-2xl text-pretty">
+            {heroSubtitle}
           </p>
+          {page.intro ? (
+            <p className="mt-6 text-base md:text-lg text-qbf-gray/90 leading-relaxed max-w-2xl">
+              {page.intro}
+            </p>
+          ) : null}
         </div>
 
         <div className="mb-12 flex gap-4 overflow-x-auto pb-4 scrollbar-hide">

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { readData, upsertBy, slugify } from "@/lib/db";
+import { revalidateCollection } from "@/lib/revalidate";
 
 export async function GET() {
   const careers = await readData("careers");
@@ -19,6 +20,7 @@ export async function POST(request: Request) {
   };
 
   await upsertBy("careers", "slug", slug, newJob);
+  revalidateCollection("careers", slug);
 
   return NextResponse.json(newJob);
 }

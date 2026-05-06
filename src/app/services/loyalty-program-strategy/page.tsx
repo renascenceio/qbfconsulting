@@ -1,10 +1,22 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle, Target, Users, Zap, Search } from "lucide-react";
+import { findBy } from "@/lib/db";
 
-export default function ServiceItemPage({ params }: { params: { slug: string } }) {
-  // Mock data based on the slug could be used here
-  const title = "Loyalty Program Strategy";
-  const valueProp = "Design long-term loyalty roadmaps that balance business objectives with human behavior.";
+export async function generateMetadata(): Promise<Metadata> {
+  const page: any = await findBy("pages", "slug", "service-strategy");
+  return {
+    title: page?.seoTitle || "Loyalty Strategy | QBF Consulting",
+    description: page?.seoDescription || "Loyalty program strategy services from QBF Consulting.",
+  };
+}
+
+export default async function ServiceItemPage() {
+  const page: any = (await findBy("pages", "slug", "service-strategy")) || {};
+  const heroTitle = page.heroTitle || "Loyalty Program Strategy.";
+  const heroSubtitle =
+    page.heroSubtitle ||
+    "Long-term loyalty roadmaps that balance business objectives with human behaviour.";
 
   return (
     <div className="section-padding bg-qbf-white min-h-screen">
@@ -17,12 +29,17 @@ export default function ServiceItemPage({ params }: { params: { slug: string } }
         </Link>
 
         <div className="max-w-4xl mb-20">
-          <h1 className="text-5xl md:text-8xl font-display font-black text-qbf-black mb-8 leading-tight tracking-tight">
-            {title}
+          <h1 className="text-5xl md:text-8xl font-display font-black text-qbf-black mb-8 leading-tight tracking-tight text-balance">
+            {heroTitle}
           </h1>
-          <p className="text-2xl md:text-3xl text-qbf-gray leading-relaxed max-w-3xl">
-            {valueProp}
+          <p className="text-2xl md:text-3xl text-qbf-gray leading-relaxed max-w-3xl text-pretty">
+            {heroSubtitle}
           </p>
+          {page.intro ? (
+            <p className="mt-8 text-base md:text-lg text-qbf-gray/90 leading-relaxed max-w-3xl">
+              {page.intro}
+            </p>
+          ) : null}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-32">
@@ -55,17 +72,16 @@ export default function ServiceItemPage({ params }: { params: { slug: string } }
         <div className="bg-qbf-black text-white p-12 md:p-20 rounded-[3rem] mb-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div>
-              <h2 className="text-4xl font-display font-black mb-8 leading-tight">Who it's for</h2>
+              <h2 className="text-4xl font-display font-black mb-8 leading-tight">Who it&apos;s for</h2>
               <p className="text-xl text-qbf-gray mb-12 max-w-lg leading-relaxed">
-                Enterprises looking to design, build, or optimize their customer
-                loyalty programs for long-term success.
+                Enterprises looking to design, build, or optimize their customer loyalty programs for long-term success.
               </p>
               <ul className="space-y-4">
                 {[
                   "Chief Marketing Officers",
                   "Heads of Customer Loyalty",
                   "Product Strategy Teams",
-                  "Innovation Leaders"
+                  "Innovation Leaders",
                 ].map((item, i) => (
                   <li key={i} className="flex gap-4 items-center font-bold text-lg">
                     <div className="w-6 h-6 bg-qbf-orange rounded-full flex items-center justify-center shrink-0">

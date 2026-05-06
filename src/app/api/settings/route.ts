@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServiceClient } from "@/lib/supabase/server";
+import { revalidateAll } from "@/lib/revalidate";
 
 const SETTINGS_KEY = "site";
 
@@ -40,5 +41,6 @@ export async function PUT(req: NextRequest) {
     console.error("[settings] write error:", error.message);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
+  revalidateAll();
   return NextResponse.json(merged);
 }

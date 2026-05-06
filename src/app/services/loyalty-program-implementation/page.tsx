@@ -1,9 +1,23 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, CheckCircle, Target, Users, Zap, Search } from "lucide-react";
+import { ArrowLeft, Target, Users, Zap, Search } from "lucide-react";
+import { findBy } from "@/lib/db";
 
-export default function ServiceItemPage() {
-  const title = "Loyalty Program Implementation";
-  const valueProp = "Move from concepts to fully-operational systems. We bridge the gap between design and technology.";
+export async function generateMetadata(): Promise<Metadata> {
+  const page: any = await findBy("pages", "slug", "service-implementation");
+  return {
+    title: page?.seoTitle || "Loyalty Implementation | QBF Consulting",
+    description:
+      page?.seoDescription || "Loyalty program implementation services from QBF Consulting.",
+  };
+}
+
+export default async function ServiceItemPage() {
+  const page: any = (await findBy("pages", "slug", "service-implementation")) || {};
+  const heroTitle = page.heroTitle || "Loyalty Program Implementation.";
+  const heroSubtitle =
+    page.heroSubtitle ||
+    "Move from concept to fully operational system. We bridge the gap between design and technology.";
 
   return (
     <div className="section-padding bg-qbf-white min-h-screen">
@@ -16,12 +30,17 @@ export default function ServiceItemPage() {
         </Link>
 
         <div className="max-w-4xl mb-20">
-          <h1 className="text-5xl md:text-8xl font-display font-black text-qbf-black mb-8 leading-tight tracking-tight">
-            {title}
+          <h1 className="text-5xl md:text-8xl font-display font-black text-qbf-black mb-8 leading-tight tracking-tight text-balance">
+            {heroTitle}
           </h1>
-          <p className="text-2xl md:text-3xl text-qbf-gray leading-relaxed max-w-3xl">
-            {valueProp}
+          <p className="text-2xl md:text-3xl text-qbf-gray leading-relaxed max-w-3xl text-pretty">
+            {heroSubtitle}
           </p>
+          {page.intro ? (
+            <p className="mt-8 text-base md:text-lg text-qbf-gray/90 leading-relaxed max-w-3xl">
+              {page.intro}
+            </p>
+          ) : null}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-32">

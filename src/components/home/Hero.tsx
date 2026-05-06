@@ -4,8 +4,16 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useI18n } from "@/lib/i18n";
 
-export const Hero = () => {
+type HeroProps = {
+  title?: string;
+  subtitle?: string;
+  intro?: string;
+};
+
+export const Hero = ({ title, subtitle, intro }: HeroProps = {}) => {
   const { t } = useI18n();
+  const heroTitle = title || t("hero_title");
+  const heroSubtitle = subtitle || t("hero_subtitle");
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -55,15 +63,24 @@ export const Hero = () => {
             variants={itemVariants}
             className="text-5xl md:text-7xl lg:text-8xl font-display font-black leading-[1.05] tracking-tight text-qbf-black mb-8"
           >
-            {t("hero_title")}
+            {heroTitle}
           </motion.h1>
 
           <motion.p
             variants={itemVariants}
             className="text-lg md:text-2xl text-qbf-gray max-w-2xl mb-12 leading-relaxed"
           >
-            {t("hero_subtitle")}
+            {heroSubtitle}
           </motion.p>
+
+          {intro ? (
+            <motion.p
+              variants={itemVariants}
+              className="text-base md:text-lg text-qbf-gray/90 max-w-2xl mb-10 leading-relaxed"
+            >
+              {intro}
+            </motion.p>
+          ) : null}
 
           <motion.div variants={itemVariants} className="flex flex-wrap gap-5">
             <Link

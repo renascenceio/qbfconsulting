@@ -1,18 +1,39 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { findBy } from "@/lib/db";
 
-export default function PartnersPage() {
+export async function generateMetadata(): Promise<Metadata> {
+  const page: any = await findBy("pages", "slug", "partners");
+  return {
+    title: page?.seoTitle || "Partners | QBF Consulting",
+    description:
+      page?.seoDescription ||
+      "QBF Consulting collaborates with industry leaders and technology providers to deliver world-class loyalty solutions.",
+  };
+}
+
+export default async function PartnersPage() {
+  const page: any = (await findBy("pages", "slug", "partners")) || {};
+  const heroTitle = page.heroTitle || "Our Partners.";
+  const heroSubtitle =
+    page.heroSubtitle ||
+    "We collaborate with industry leaders and technology providers to deliver world-class loyalty solutions.";
+
   return (
     <div className="section-padding bg-qbf-white min-h-screen">
       <div className="max-content">
         <div className="max-w-4xl mb-20">
-          <h1 className="text-5xl md:text-7xl font-display font-black text-qbf-black mb-8 leading-tight">
-            Our <br />
-            <span className="text-qbf-orange">Partners.</span>
+          <h1 className="text-5xl md:text-7xl font-display font-black text-qbf-black mb-8 leading-tight text-balance">
+            {heroTitle}
           </h1>
-          <p className="text-2xl text-qbf-gray leading-relaxed max-w-2xl">
-            We collaborate with industry leaders and technology providers to
-            deliver world-class loyalty solutions.
+          <p className="text-2xl text-qbf-gray leading-relaxed max-w-2xl text-pretty">
+            {heroSubtitle}
           </p>
+          {page.intro ? (
+            <p className="mt-6 text-base md:text-lg text-qbf-gray/90 leading-relaxed max-w-2xl">
+              {page.intro}
+            </p>
+          ) : null}
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mb-32">
@@ -33,8 +54,7 @@ export default function PartnersPage() {
             Become a Partner.
           </h2>
           <p className="text-xl text-qbf-gray mb-12 max-w-2xl mx-auto">
-            Ready to collaborate with QBF Consulting? We are always looking
-            for new partnerships to grow the loyalty ecosystem.
+            Ready to collaborate with QBF Consulting? We are always looking for new partnerships to grow the loyalty ecosystem.
           </p>
           <Link
             href="/contact?type=partnership"
