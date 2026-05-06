@@ -42,7 +42,9 @@ export default function CaseStudyEditor({
       status: "Published",
     }
   );
-  const [tagsInput, setTagsInput] = useState((initial?.tags || []).join(", "));
+  const [tagsInput, setTagsInput] = useState<string>(
+    ((initial?.tags as string[] | undefined) || []).join(", ")
+  );
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
